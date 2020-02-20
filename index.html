@@ -1,0 +1,116 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-20 17:51:32
+ * @LastEditTime: 2020-02-20 19:12:04
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/index.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .tab {
+            height: 100px;
+            width: 100%;
+            background-color: #ffffff;
+            border: palevioletred 1px solid;
+        }
+
+        .tab_list ul {
+         
+        }
+
+        ul li {
+            list-style: none;
+            float: left;
+            width: 17%;
+            padding: 20px;
+
+        }
+
+        .bg {
+            background-color: pink;
+            color: #ffffff;
+        }
+
+        .item {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+
+        <div class="con">
+            <div class="item">内容1</div>
+            <div class="item">内容2</div>
+            <div class="item">内容3</div>
+            <div class="item">内容4</div>
+            <div class="item">内容5</div>
+        </div>
+
+    </div>
+
+    <script>
+        var tablist = document.getElementsByTagName("li");
+        var conlist = document.getElementsByClassName("item")
+        
+
+        for (var i = 0; i < tablist.length; i++) {
+            //设定自定义属性index：索引号i
+            tablist[i].setAttribute("index",i)
+            tablist[i].onmouseover = function () {
+                // this.style.backgroundColor="pink" 与下面作用相同   
+                this.className = ("bg")
+            }
+
+            tablist[i].onmouseout = function () {
+                this.className = ("")
+            }
+
+            tablist[i].onclick = function () {
+                //排他思想 先干掉其他所有 再改变自己的颜色
+                for (var i = 0; i < tablist.length; i++) {
+                    tablist[i].style.backgroundColor = "#ffff";
+                    tablist[i].style.color = "#000"
+                }
+                console.log("11");
+                this.style.backgroundColor = "pink";
+                this.style.color = "#ffffff";
+                //得到当前tablist的index值
+                var index = this.getAttribute("index");
+                for(var i = 0;i<conlist.length;i++){
+                    conlist[i].style.display="none"
+                }
+                conlist[index].style.display="block"
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>
