@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            border: 1 #ffffff solid;
+        }
+      table thead tr{
+          background-color: pink;
+      }
+    </style>
+</head>
+
+<body>
+      <table class="nav" border="1">
+          <thead>
+             <tr>
+                 <th>姓名</th>
+                 <th>科目</th>
+                 <th>分数</th>
+             </tr>
+          </thead>
+
+          <tbody>
+
+          </tbody>
+      </table>
+
+    <script>
+      var datas = [{
+          name:'吼吼吼',
+          subject:'javascript',
+          score:100
+      },{
+          name:'嘻嘻',
+          subject:'javascript',
+          score:99
+      },{
+          name:'啦啦啦',
+          subject:'javascript',
+          score:98
+      }];
+
+    //   往tbody创建行 有几个人就创建几行
+    var tbody = document.querySelector("tbody");
+    for(var i = 0;i < datas.length;i++){
+        // 创建新元素
+        var tr = document.createElement("tr");
+        // 插入新元素
+        tbody.appendChild(tr);
+        for(var k in datas[i]){
+            // 创建单元格
+            var td = document.createElement("td");
+            // 插入单元格
+            tr.append(td)
+            // 赋值
+            td.innerHTML=datas[i][k];
+        }
+    }
+
+
+    </script>
+</body>
+
+</html>
