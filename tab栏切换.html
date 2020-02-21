@@ -1,23 +1,24 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-20 17:51:32
- * @LastEditTime: 2020-02-20 19:12:04
+ * @LastEditTime: 2020-02-21 12:32:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/index.html
- -->
+-->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <style>
-        body{
+        body {
             margin: 0;
         }
+
         .tab {
             height: 100px;
             width: 100%;
@@ -25,16 +26,13 @@
             border: palevioletred 1px solid;
         }
 
-        .tab_list ul {
-         
-        }
+        .tab_list ul {}
 
         ul li {
             list-style: none;
             float: left;
             width: 17%;
             padding: 20px;
-
         }
 
         .bg {
@@ -71,45 +69,47 @@
             <div class="item">内容4</div>
             <div class="item">内容5</div>
         </div>
-
     </div>
+
+    
 
     <script>
         var tablist = document.getElementsByTagName("li");
-        var conlist = document.getElementsByClassName("item")
-        
-
+        var conlist = document.getElementsByClassName("item");
+        // 默认显示第一个tab及其内容
+        tablist[0].className = "bg";
+        conlist[0].style.display = "block";
         for (var i = 0; i < tablist.length; i++) {
             //设定自定义属性index：索引号i
-            tablist[i].setAttribute("index",i)
-            tablist[i].onmouseover = function () {
-                // this.style.backgroundColor="pink" 与下面作用相同   
-                this.className = ("bg")
-            }
+            tablist[i].setAttribute("index", i);
+            
+            // tablist[i].onmouseover = function () {
+            //     //this.style.backgroundColor="pink" 与下面作用相同
+            //     this.className = "bg";
+            // };
 
-            tablist[i].onmouseout = function () {
-                this.className = ("")
-            }
+            // tablist[i].onmouseout = function () {
+            //     this.className = "";
+            // };
 
             tablist[i].onclick = function () {
                 //排他思想 先干掉其他所有 再改变自己的颜色
                 for (var i = 0; i < tablist.length; i++) {
                     tablist[i].style.backgroundColor = "#ffff";
-                    tablist[i].style.color = "#000"
+                    tablist[i].style.color = "#000";
                 }
-                console.log("11");
                 this.style.backgroundColor = "pink";
                 this.style.color = "#ffffff";
                 //得到当前tablist的index值
                 var index = this.getAttribute("index");
-                for(var i = 0;i<conlist.length;i++){
-                    conlist[i].style.display="none"
+                for (var i = 0; i < conlist.length; i++) {
+                    conlist[i].style.display = "none";
                 }
-                conlist[index].style.display="block"
-
-            }
-
+                conlist[index].style.display = "block";
+            };
         }
+
+      
     </script>
 </body>
 

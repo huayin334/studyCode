@@ -1,0 +1,90 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-21 13:13:31
+ * @LastEditTime: 2020-02-21 15:51:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/下拉菜单.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul li {
+            list-style: none;
+        }
+
+        .nav>li {
+            float: left;
+            background-color: palevioletred;
+        }
+
+        .navtwo {
+            background-color: #ffffff;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 有序列表 ol li 无序列表 ul li  -->
+
+    <ul class="nav">
+        <li>
+            <text>bing</text>
+            <ul class="navtwo">
+                <li> <a href="https://cn.bing.com/">bing</a></li>
+                <li> <a href="https://cn.bing.com/">bing</a></li>
+                <li> <a href="https://cn.bing.com/">bing</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <text>bing</text>
+            <ul class="navtwo">
+                <li> <a href="https://cn.bing.com/">bing</a></li>
+                <li> <a href="https://cn.bing.com/">bing</a></li>
+                <li> <a href="https://cn.bing.com/">bing</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <text>bing</text>
+            <ul class="navtwo">
+                <li> <a href="https://cn.bing.com/">bing</a></li>
+                <li> <a href="https://cn.bing.com/">bing</a></li>
+                <li> <a href="https://cn.bing.com/">bing</a></li>
+            </ul>
+        </li>
+        <li>
+            <text>bing</text>
+            <ul class="navtwo">
+                <li> <a href="https://cn.bing.com/">bing</a></li>
+                <li> <a href="https://cn.bing.com/">bing</a></li>
+                <li> <a href="https://cn.bing.com/">bing</a></li>
+            </ul>
+        </li>
+    </ul>
+
+
+    <script>
+        var nav = document.querySelector(".nav")
+        var lits = nav.children; //得到四个小li
+        for (var i = 0; i < lits.length; i++) {
+            lits[i].onmouseover = function () {
+                this.children[1].style.display = "block"
+            }
+
+            lits[i].onmouseout = function () {
+                this.children[1].style.display = "none"
+            }
+        }
+    </script>
+</body>
+
+</html>
