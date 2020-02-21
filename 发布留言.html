@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-21 16:08:54
- * @LastEditTime: 2020-02-21 16:26:25
+ * @LastEditTime: 2020-02-21 17:03:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/发布留言.html
@@ -21,11 +21,13 @@
             background-color: pink;
         }
 
-        .btn {
-            margin: 10px 0 0 250px;
+        .btn {}
+
+        .btn-del {
+            margin: 10px 0 0 200px;
         }
 
-        ul{
+        ul {
             list-style: none;
         }
     </style>
@@ -35,37 +37,64 @@
     <div>
         <textarea class="text-input" name="" id="" cols="30" rows="10">在此处留言</textarea>
     </div>
+
     <div>
+        <button class="btn-del">清空</button>
         <button class="btn">点击发布</button>
+
     </div>
 
+
     <ul>
-       
+
 
     </ul>
 
     <script>
         // 获取元素
         var btn = document.querySelector(".btn");
+        var del = document.querySelector(".btn-del");
         var text = document.querySelector("textarea");
         var ul = document.querySelector("ul");
         var date = new Date()
 
         // 注册事件
         btn.onclick = function () {
-            if(text.value==''){
+            if (text.value == '') {
                 alert("没有输入内容")
                 return false;
+            } else {
+               
+                // 创建元素
+                var li = document.createElement("li");
+                li.innerHTML = text.value + date + "<a href='javascript:;'>删除</a>";
+                // 添加元素
+                // ul.appendChild(li);     在后面插入
+                ul.insertBefore(li, ul.children[0]); //从前面插入
+                // 删除元素
+                var as = document.querySelectorAll('a');
+                for (var i = 0; i < as.length; i++) {
+                    as[i].onclick = function () {
+                        ul.removeChild(this.parentNode);
+                    }
+                }
             }
-            else{
-            // 创建元素
-            var li = document.createElement("li");
-            li.innerHTML=text.value + date;
-            // 添加元素
-            // ul.appendChild(li);     在后面插入
-            ul.insertBefore(li,ul.children[0]);//从前面插入
+            text.value = "";
+        }
+
+        del.onclick = function () {
+            if (text.value == '') {
+                alert("已经是空的啦")
+                return false;
+            } else {         
+                text.value = "";
             }
-            text.value="";
+            // if(ul.children.length>0){
+            //     ul.removeChild(ul.children[0])
+            // }else{
+            //     del.disable=true;
+            // }
+
         }
     </script>
 
