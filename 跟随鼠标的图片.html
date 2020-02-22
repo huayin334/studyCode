@@ -1,0 +1,58 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-22 07:54:53
+ * @LastEditTime: 2020-02-22 08:32:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/跟随鼠标的图片.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+        }
+
+        /* div{
+            width: 1000px;
+            height: 1000px;
+            background-color: pink;
+        } */
+    </style>
+</head>
+
+<body>
+
+    <img src="images/flower.png" alt="">
+
+    <script>
+        var pic = document.querySelector("img");
+        // document.body.addEventListener = ("mousemove", function (e) {
+        //     console.log(e);           
+        //     var x = e.pageX;
+        //     var y = e.pageY;
+        //     console.log(x+"-----"+y);           
+        //     pic.style.left = x + "px";
+        //     pic.style.top = y + "px";
+        // },false);
+
+        document.onmousemove = function (e) {
+            console.log(e);
+            var x = e.pageX;
+            var y = e.pageY;
+            console.log(x + "-----" + y);
+            pic.style.left = x + "px";
+            pic.style.top = y + "px";
+        }
+    </script>
+</body>
+
+</html>
