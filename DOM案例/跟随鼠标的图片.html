@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-22 07:54:53
- * @LastEditTime: 2020-02-22 08:32:12
+ * @LastEditTime: 2020-02-22 08:44:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/跟随鼠标的图片.html
@@ -35,7 +35,7 @@
 
     <script>
         var pic = document.querySelector("img");
-        // document.body.addEventListener = ("mousemove", function (e) {
+        // document.body.addEventListener  ("mousemove", function (e) {
         //     console.log(e);           
         //     var x = e.pageX;
         //     var y = e.pageY;
@@ -45,13 +45,26 @@
         // },false);
 
         document.onmousemove = function (e) {
-            console.log(e);
+            // console.log(e);
             var x = e.pageX;
             var y = e.pageY;
-            console.log(x + "-----" + y);
+            // console.log(x + "-----" + y);
             pic.style.left = x + "px";
             pic.style.top = y + "px";
         }
+
+        // 键盘事件
+        document.addEventListener("keyup",function(e){
+            console.log("弹起");
+        })
+
+        // document.addEventListener("keydown",function(e){
+        //     console.log("按压");
+        // })
+
+        document.addEventListener("keypress",function(e){
+            console.log("按压");
+        })
     </script>
 </body>
 
