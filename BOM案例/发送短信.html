@@ -1,0 +1,59 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-22 18:11:47
+ * @LastEditTime: 2020-02-22 18:37:22
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edity
+ * @FilePath: /studyCode/BOM案例/发送短信.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .btn {
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="number" placeholder="输入手机号">
+        <input type="button" value="点击发送短信" class="btn">
+    </div>
+    <script>
+        var input = document.querySelectorAll("input");
+        var num = input[0];
+        console.log(num);
+        var btn = input[1];
+        var sec = 6;
+        var time1 = null;
+        btn.addEventListener("click", function () {
+            console.log(num.value);
+            if (!num.value) {
+                alert("请输入手机号")
+            } else {
+                this.disabled = true;
+                time1 = setInterval(function () {
+                    if (sec > 1) {
+                        sec--;
+                        btn.value = sec + "秒后可以再次发送"
+                    } else {
+                        clearInterval(time1)
+                        sec = 6;
+                        btn.value = "点击发送短信"
+                        btn.disabled = false
+                    }
+                }, 1000)
+            }
+
+        })
+    </script>
+</body>
+
+</html>

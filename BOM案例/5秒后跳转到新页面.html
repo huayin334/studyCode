@@ -1,0 +1,55 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-22 19:27:50
+ * @LastEditTime: 2020-02-22 19:39:04
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/BOM案例/5秒后跳转到新页面.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+    </div>
+    <text class="" selectable="false" space="false" decode="false">
+        秒后跳转到新页面
+    </text>
+  <button>取消跳转</button>
+      
+    <script>
+        var div = document.querySelector("div");
+        var btn = document.querySelector("button");
+        var text = document.querySelector("text");
+        var sec = 5;
+        var time = null;
+        div.innerHTML = sec;
+         time = setInterval(function () {
+            if (sec > 0) {
+                sec--
+                div.innerHTML = sec;
+            } else {
+                window.location.href = "https://www.baidu.com/";
+                clearInterval(time)
+            }
+        }, 1000)   
+        
+        btn.addEventListener("click",function(){
+            clearInterval(time);
+            div.innerHTML="";
+            text.innerHTML="不跳转啦";
+        })
+    </script>
+</body>
+
+</html>

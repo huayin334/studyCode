@@ -1,0 +1,146 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-22 19:53:57
+ * @LastEditTime: 2020-02-22 21:04:29
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/index.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        header {
+            width: 100%;
+            height: 200px;
+            background-color: #beebe9;
+        }
+
+        nav {
+            width: 100%;
+            height: 200px;
+            background-color: #fffdf9;
+        }
+
+        section {
+            width: 100%;
+            height: 200px;
+            background-color: #ffe3ed;
+            display: flex;
+        }
+
+        footer {
+            width: 100%;
+            height: 200px;
+            background-color: #8ac6d1;
+        }
+
+        /* 定义动画  move是名称*/
+        @keyframes move {
+
+            /* from */
+            /* 0->100 两个状态 */
+            0% {
+                transform: translateX(0);
+            }
+
+            /* to */
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes move1 {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(0, 100%);
+            }
+        }
+
+        @keyframes movetwo {
+
+            /* 状态变化的百分比要是整数 */
+            0% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(0, 100%);
+            }
+
+            50% {
+                transform: translate(100%, 100%);
+            }
+
+            75% {
+                transform: translate(100%, 0);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        /* 使用动画 */
+
+        .move {
+            width: 100px;
+            height: 100px;
+            background-color: rebeccapurple;
+            /* 调用动画 move是名称*/
+            animation-name: movetwo;
+            /* 持续时间 */
+            animation-duration: 4s;
+            /*运动曲线 */
+            animation-timing-function: ease;
+            /* 何时开始 */
+            animation-delay: 1s;
+            /* 重复次数 无限次infinite */
+            animation-iteration-count: infinite;
+            /* 是否反方向播放 默认normol 反方向alternate*/
+            animation-direction: alternate;
+        }
+
+        .round{
+            width: 100px;
+            height: 100px;
+            margin: 0 10px;
+            background-color: #fff;
+            border: 1px solid rebeccapurple;
+            transition: all 0.3s;
+        }
+        .round:hover{
+            /* 可以是百分号或px 百分号是基于自身长度or宽度 */
+            transform: translateY(-4%);
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- 可以使用多次 -->
+    <header>header <div class="move">我是移动的动画</div>
+    </header>
+    <nav>导航 <div >我是移动的动画</div>
+    </nav>
+    <section>大型块级
+        <div class="round">我是移动的动画</div>
+        <div class="round">我是移动的动画</div>
+        <div class="round">我是移动的动画</div>
+    </section>
+    <footer>尾部 <div>我是移动的动画</div>
+    </footer>
+    <script>
+
+    </script>
+</body>
+
+</html>

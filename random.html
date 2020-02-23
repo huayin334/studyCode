@@ -1,0 +1,135 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-23 11:02:30
+ * @LastEditTime: 2020-02-23 11:12:55
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/random.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        nav {
+            width: 100%;
+            height: 200px;
+            background-color: #ffe3ed;
+            /* position:absolute; 
+            overflow-y:auto */
+        }
+
+        input {
+            height: 25px;
+            border-radius: 8px;
+        }
+
+        button {
+            height: 30px;
+            width: 100px;
+            border: 1px solid #000000;
+            border-radius: 20px;
+        }
+        .num{
+            margin: 5px;
+        }
+        .min-max{
+            
+        }
+        .btn{
+            margin: 10px;
+        }
+
+        .submit {
+            background-color: #ffffff;
+        }
+
+        .del {
+            background-color: #ffffff;
+        }
+
+        .ran {
+            height: 130px;
+            width: 100%;
+            position: absolute;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="num">随机数个数：
+            <input type="number">
+        </div>
+
+        <div class="mix-max">随机数范围：
+            <input type="number">
+            <text>
+                ~
+            </text>
+            <input type="number">
+        </div>
+        <div class="btn">
+            <button class="submit">点击生成</button>
+            <button class="del">重置</button>
+        </div>
+
+
+        <text>
+            随机生成的结果是
+        </text>
+        <div class="ran"></div>
+
+    </nav>
+    <script>
+        var nums = document.querySelectorAll("input")
+        var submit = document.querySelector(".submit")
+        var del = document.querySelector(".del")
+        var randiv = document.querySelector(".ran")
+        var rans = [];
+
+        // 获取min到max的整数随机数，包含min到max
+        function getRandom(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // 提交
+        submit.addEventListener("click", function () {
+            var min = nums[1].valueAsNumber;
+            var max = nums[2].valueAsNumber;
+            var manyNum = nums[0].valueAsNumber;
+            if (min && max && min < max) {
+                for (var i = 0; i < manyNum; i++) {
+                    var ran = getRandom(min, max)
+                    rans.push(ran);
+                }
+                var r = rans.join();
+                randiv.innerHTML = r;
+                console.log(r);
+            } else {
+                alert("输入有误")
+                console.log(min);
+            }
+        })
+
+        // 重置
+        del.addEventListener("click", function () {
+            randiv.innerHTML = "";
+            rans.length = 0;
+            console.log(nums);
+            nums[0].value = "";
+            nums[1].value = "";
+            nums[2].value = "";
+        })
+    </script>
+</body>
+
+</html>
