@@ -1,0 +1,112 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-24 13:29:12
+ * @LastEditTime: 2020-02-26 11:38:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/jquery案例/下拉菜单.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <style>
+        .nav {
+            list-style: none;
+        }
+
+        .nav>li {
+            float: left;
+            margin: 0;
+            padding: 10px;
+            background-color: azure;
+            border-top: 1px solid #000000;
+            border-bottom: 1px solid #000000;
+        }
+
+        /* .nav>li:nth-child(2n) {
+            border-left: 1px solid #000000;
+        }
+
+        .nav>li:nth-child(2n+1) {
+            border-left: 1px solid #000000;
+        }
+
+        .nav>li:last-child {
+            border-right: 1px solid #000000;
+        } */
+
+        .nav1 {
+            list-style: none;
+            display: none;
+            padding: 10px 0;
+
+        }
+
+        .nav1>li {
+            text-align: center;
+            padding: 5px;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+
+</head>
+
+<body>
+    <ul class="nav">
+        <li>
+            <a href="#">菜单1</a>
+
+            <ul class="nav1">
+                <li><a href="#">选项1</a></li>
+                <li><a href="#">选项1</a></li>
+                <li><a href="#">选项1</a></li>
+
+            </ul>
+        </li>
+        <li>菜单2
+            <ul class="nav1">
+                <li>选项1</li>
+                <li>选项2</li>
+                <li>选项3</li>
+            </ul>
+        </li>
+        <li>菜单3
+            <ul class="nav1">
+                <li>选项1</li>
+                <li>选项2</li>
+                <li>选项3</li>
+            </ul>
+        </li>
+        <li>菜单4
+            <ul class="nav1">
+                <li>选项1</li>
+                <li>选项2</li>
+                <li>选项3</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        $(function () {
+            console.log($(".nav>li"));
+            // 鼠标经过事件
+            $(".nav>li").mouseover(function () {
+                $(this).children("ul").show()
+            })
+
+            $(".nav>li").mouseout(function () {
+                $(this).children("ul").hide()
+            })
+        })
+    </script>
+</body>
+
+</html>

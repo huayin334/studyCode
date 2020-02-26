@@ -1,0 +1,115 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-25 16:27:26
+ * @LastEditTime: 2020-02-25 21:06:26
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/案例/移动端.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .focus {
+            position: relative;
+        }
+
+        .focus ul {
+            list-style: none;
+            overflow: hidden;
+            width: 500%;
+            margin-left: -110%;
+        }
+
+        .focus ul li {
+            width: 20%;
+            float: left;
+        }
+
+        .focus img {
+            width: 100%;
+        }
+
+        .focus ol {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;           
+        }
+
+        .focus ol li {
+            list-style: none;
+            display: inline-block;
+            margin: 0;
+            width: 3px;
+            height: 3px;
+            border: 1px solid #000000;
+            border-radius: 2px;
+            text-align: center;
+            transition:all .3s;
+        }
+        .focus ol li.current{
+            background-color:#fff;
+            width: 10px;
+           
+        }
+    </style>
+    <script src="js/index.js"></script>
+</head>
+
+<body>
+    <div class="focus">
+        <ul>
+            <li>
+                <a href="javascript:;">
+                    <img src="../images/banner2.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="../images/banner0.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="../images/banner1.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="../images/banner2.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="../images/banner0.jpg" alt="">
+                </a>
+            </li>
+        </ul>
+        <ol>
+
+            <li  class="current">
+                <a href="javascript:;"></a>
+            </li>
+
+            <li>
+                <a href="javascript:;"></a>
+            </li>
+
+            <li>
+                <a href="javascript:;"></a>
+            </li>
+
+        </ol>
+    </div>
+
+    <script>
+       
+    </script>
+</body>
+
+</html>

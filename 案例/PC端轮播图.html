@@ -1,0 +1,125 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-25 12:21:00
+ * @LastEditTime: 2020-02-25 19:18:10
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/案例/轮播图.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      a{
+        text-decoration: none;
+        color:inherit;
+      }
+    .focus  ul{
+          list-style: none;
+          display: flex;
+          position: absolute;
+          top: 0;
+          left: 0;
+          margin: 0;   
+      }
+      ul li{
+          float: left;
+          margin: 0 30px 0 0;
+         
+      }
+      ol{
+          list-style: none;
+          position: fixed;
+          top: 50%;
+          left: 44%;
+      }
+      ol li{
+          width: 10px;
+          height: 10px;
+          margin: 10px 5px;
+          border: 1px solid #000000;
+          border-radius: 50%;
+          float: left;
+          background-color: #fff;
+      }
+      .focus{
+        width: 1310px;
+        /* height: 450px; */
+      }
+      .box{
+          width: 1310px;
+          overflow: hidden;
+      }
+      .current{
+          background-color: red;
+      }
+      .left,
+      .right{
+          display: none;
+          position: absolute;
+          top:230px;
+          width: 40px;
+          height: 40px;
+          background: rgba(0, 0, 0, .3);
+          border-radius: 50%;
+          text-align: center;
+          line-height: 40px;
+          color: #ffffff;
+          font-size: 18px;
+          z-index: 999;
+      }
+      .left{
+        left: 20px;
+      }
+      .right{
+         right: 20px;
+      }
+    </style>
+    <!-- 引入动画js 首页js依赖动画js 动画js要放到前面!!! -->
+    <script src="js/animate.js"></script>
+    <!-- 引入首页js文件 -->
+    <script src="js/indexPC.js"></script>
+</head>
+
+<body>
+    <div class="focus">
+        <a href="javascript:;" class="left">&lt;</a>
+        <a href="javascript:;" class="right">&gt;</a>
+        <div class="box">   
+        <ul>
+            <li>
+                <a href="#">
+                    <img  id="0" src="../images/banner0.jpg" alt="无法显示">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img id="1" src="../images/banner1.jpg" alt="无法显示">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img id="2" src="../images/banner2.jpg" alt="无法显示">
+                </a>
+            </li>
+        </ul>
+    </div>
+        <ol>
+            <!-- <a href="#0"><li></li></a>
+            <a href="#1"><li></li></a>
+            <a href="#2"><li></li></a> -->
+          
+        </ol>
+    </div>
+      
+    <script>
+      
+    </script>
+</body>
+
+</html>

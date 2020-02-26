@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-22 18:11:47
- * @LastEditTime: 2020-02-22 18:37:22
+ * @LastEditTime: 2020-02-24 09:10:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edity
  * @FilePath: /studyCode/BOM案例/发送短信.html
@@ -38,16 +38,20 @@
             if (!num.value) {
                 alert("请输入手机号")
             } else {
-                this.disabled = true;
+                // 让按钮禁用
+                this.disabled = "disabled";
                 time1 = setInterval(function () {
                     if (sec > 1) {
                         sec--;
-                        btn.value = sec + "秒后可以再次发送"
+                        btn.value = sec + "秒后可以再次发送";
                     } else {
                         clearInterval(time1)
                         sec = 6;
-                        btn.value = "点击发送短信"
-                        btn.disabled = false
+                        btn.value = "点击发送短信";
+                        // 解除禁用
+                        // 把disabled设为false即可，“false”是字符串，是true，一定不要带引号
+                        // 表示false有六种： null "" undefined 0 -0 NaN
+                        btn.disabled = false;
                     }
                 }, 1000)
             }

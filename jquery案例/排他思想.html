@@ -1,0 +1,44 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-26 13:10:35
+ * @LastEditTime: 2020-02-26 13:18:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/jquery案例/排他思想.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <button>点我</button>
+    <button>点我</button>
+    <button>点我</button>
+    <button>点我</button>
+    <button>点我</button>
+    <script>
+        $(function () {
+            //   隐式迭代
+            $("button").click(function () {
+                console.log("被你点了");
+                // 排他思想
+                // 当前元素变色
+                $(this).css("background", "pink");
+                // 除当前元素的兄弟元素去掉背景颜色,隐式迭代
+                $(this).siblings("button").css("background", "");
+            })
+        })
+    </script>
+</body>
+
+</html>

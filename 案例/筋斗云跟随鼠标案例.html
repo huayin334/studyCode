@@ -1,0 +1,109 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-24 20:05:42
+ * @LastEditTime: 2020-02-25 11:55:53
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/案例/筋斗云跟随鼠标案例.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .c-nav {
+            display: flex;
+        }
+
+        .cloud {
+            position: absolute;
+            left: 48px;
+            top: 68px;
+            width: 84px;
+            height: 6px;
+            background-color: skyblue;
+            border-radius: 5px;
+        }
+
+        .c-nav ul {
+            list-style: none;
+        }
+
+        .c-nav li {
+            float: left;
+            margin: 8px 0;
+            padding: 10px;
+            background-color: pink;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="c-nav" class="c-nav">
+        <div class="cloud"></div>
+        <div>
+            <ul>
+                <li>项目列表</li>
+                <li>项目列表</li>
+                <li>项目列表</li>
+                <li>项目列表</li>
+                <li>项目列表</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var cloud = document.querySelector(".cloud");
+        var lis = document.querySelectorAll("li")
+
+        // 动画函数
+        // 注意！！！使用element.style.left改变元素位置时，元素一定要加定位！！！
+        // 总是会死循环.....
+        // 找到原因啦，每次触发事件时都会调用函数，会一直加定时器，出现超级多定时器
+        // 只要在定时器前面加一个清除定时器，就可以每次只有一个定时器啦
+        // 好吧 还是死循环
+        // 解决了bug 定时器要加到obj上去，obj.timer!!!!!
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                // 缓动动画 步长公式 步长值要改为整数 往大了取整
+                // 步长值可能为正也可能为负
+                // 为正 往大了取
+                // 为负 往小了取
+                var step = (target - obj.offsetLeft) / 10
+                step = step > 0 ? Math.ceil(step) : Math.floor(step)
+                if (obj.offsetLeft == target) {
+                    // 调用回调函数：等着动画执行完
+                    callback();
+                    clearInterval(obj.timer);
+                }
+                obj.style.left = obj.offsetLeft + step + "px"
+                console.log(obj.style.left);
+                
+            }, 15)
+        }
+
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].addEventListener("mouseenter", function (e) {
+                // 加一个回调函数
+                animate(cloud, this.offsetLeft, function () {
+                    console.log("我到地方啦");
+                })
+            })
+            // lis[i].addEventListener("mouseleave",function(e){
+            //     animate(cloud,lis[0].offsetLeft,function(){
+            //         console.log("我回去啦");
+                    
+            //     })
+            // })
+        }
+    </script>
+</body>
+
+</html>
