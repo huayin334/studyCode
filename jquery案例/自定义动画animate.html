@@ -1,0 +1,43 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-29 10:51:34
+ * @LastEditTime: 2020-02-29 12:33:25
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/jquery案例/自定义动画animate.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <button>动起来～</button>
+    <script>
+        $(function () {
+            $("button").click(function () {
+                $("div").animate({
+                    width: 300,
+                    height: 300,
+                    opacity: .4
+                }, 300)
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-29 10:10:51
+ * @LastEditTime: 2020-02-29 10:46:58
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/jquery案例/高亮突出显示.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000000;
+        }
+
+        ul {
+            list-style: none;
+            height: 406px;
+            width: 600px;
+            border: 1px #fff solid;
+            padding: 0;
+            margin: 2px;
+        }
+
+        li {
+            float: left;
+        }
+
+        img {
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <img src="../images/s1.jpeg">
+        </li>
+        <li>
+            <img src="../images/s2.jpeg">
+        </li>
+        <li>
+            <img src="../images/s3.jpeg">
+        </li>
+        <li>
+            <img src="../images/s4.jpeg">
+        </li>
+        <li>
+            <img src="../images/s5.jpeg">
+        </li>
+        <li>
+            <img src="../images/s6.jpeg">
+        </li>
+
+    </ul>
+    <script>
+        $(function () {
+            $("ul>li").hover(function () {
+                //siblings 除自身外的兄弟元素
+                $(this).siblings().stop().fadeTo(400, 0.5)
+            }, function () {
+                $(this).siblings().stop().fadeTo(400, 1)
+            })
+        })
+    </script>
+</body>
+
+</html>

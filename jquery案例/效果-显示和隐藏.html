@@ -1,0 +1,52 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-29 09:18:25
+ * @LastEditTime: 2020-02-29 09:34:43
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/jquery案例/效果-显示和隐藏.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div{
+          width: 300px;
+          height: 300px;
+          background-color: aqua;
+      }
+    </style>
+    <script src="jquery.min.js"></script>
+</head>
+
+<body>
+      <button>显示</button>
+      <button>隐藏</button>
+      <button>切换</button>
+      <div></div>
+    <script>
+      $(function(){
+        //一般情况下，不加参数，直接显示和隐藏
+        $("button").eq(0).click(function () {
+              $("div").show(1000,function(){
+              })
+            })
+          $("button").eq(1).click(function () {
+              $("div").hide(1000,function(){
+                // 这里是回调函数
+              })
+            })
+          $("button").eq(2).click(function () {
+            //切换:在显示和隐藏中选择
+              $("div").toggle(1000)    
+          })      
+      })
+    </script>
+</body>
+
+</html>

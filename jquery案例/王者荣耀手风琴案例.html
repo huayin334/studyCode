@@ -1,0 +1,121 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-29 12:33:59
+ * @LastEditTime: 2020-02-29 16:57:31
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/jquery案例/王者荣耀手风琴案例.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+            width: 852px;
+            height: 100px;
+            background-color: #224a73;
+            padding: 20px 0 0 10px;
+
+        }
+
+        li {
+            float: left;
+            position: relative;
+            width: 69px;
+            height: 69px;
+        }
+
+        .king li.current {
+            width: 224px;
+        }
+
+        .king li.current .big {
+            display: block;
+        }
+
+        .king li.current .small {
+            display: none;
+        }
+
+        /* 用到了子绝父相 */
+        .small {
+            width: 69px;
+            height: 69px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .big {
+            width: 224px;
+            display: none;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+</head>
+
+<body>
+    <ul class="king">
+        <li class="current">
+            <a href="javascript:;">
+                <img src="../images/117.jpg" class="small">
+                <img src="../images/177-freehover.png" class="big">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="../images/117.jpg" class="small">
+                <img src="../images/177-freehover.png" class="big">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="../images/148.jpg" class="small">
+                <img src="../images/148-freehover.png" class="big">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="../images/117.jpg" class="small">
+                <img src="../images/177-freehover.png" class="big">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="../images/170.jpg" class="small">
+                <img src="../images/170-freehover.png" class="big">
+            </a>
+        </li>
+    </ul>
+    <script>
+        $(function () {
+            $(".king li").mouseenter(function () {
+                // 鼠标经过时，当前li宽度变为224，同时小图片淡出，大图片淡入
+                // 链式编程
+                // img是li的孙子，不能用children，要用find
+                // big是small的兄弟，用siblings
+                $(this).stop().animate({
+                    width: 224
+                }).find(".small").stop().fadeOut().siblings(".big").stop().fadeIn()
+                $(this).siblings().stop().animate({
+                    width:69
+                }).find(".small").stop().fadeIn().siblings(".big").stop().fadeOut()
+
+            })
+        })
+    </script>
+</body>
+
+</html>
