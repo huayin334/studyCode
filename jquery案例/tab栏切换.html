@@ -1,0 +1,81 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-26 14:39:00
+ * @LastEditTime: 2020-02-26 15:00:44
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/jquery案例/tab栏切换.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+        li{
+            float: left;
+        }
+
+        .tab-list ul li {       
+            background-color: blue;
+            padding: 16px;
+        }
+        .tab-list ul li:first-child {       
+            background-color: pink;       
+        }
+
+        .active {
+            background-color: pink;
+        }
+        .con li{
+            position: absolute;
+            top: 70px;
+            left: 50px;
+            display: none;
+        }
+        .con li:first-child{
+            display: block;
+        }
+    </style>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <div class="tab-list">
+        <ul>
+            <li>商品列表1</li>
+            <li>商品列表2</li>
+            <li>商品列表3</li>
+            <li>商品列表4</li>
+            <li>商品列表5</li>
+        </ul>
+    </div>
+    <div class="con">
+        <ul>
+            <li>商品内容1</li>
+            <li>商品内容2</li>
+            <li>商品内容3</li>
+            <li>商品内容4</li>
+            <li>商品内容5</li>
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            $(".tab-list li").click(function () {
+                $(this).siblings().css("backgroundColor", "blue")
+                $(this).css("backgroundColor", "pink")
+                var index = $(this).index();
+                $(".con li").eq(index).show();
+                $(".con li").eq(index).siblings().hide();        
+            })
+        })
+    </script>
+</body>
+
+</html>

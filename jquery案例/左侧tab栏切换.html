@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-26 13:19:19
- * @LastEditTime: 2020-02-26 14:04:46
+ * @LastEditTime: 2020-02-26 14:09:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/jquery案例/左侧tab栏切换.html
@@ -75,7 +75,8 @@
            
             $("li").mouseover(function () {
                 $(this).css("background", "pink");
-                $(this).siblings("li").css("background", "lawngreen")
+                $(this).siblings().css("background", "lawngreen")
+                // 获取当前元素的索引
                 var index = $(this).index();
                 $(".img div").eq(index).show();
                 $(".img div").eq(index).siblings().hide();
