@@ -1,0 +1,93 @@
+ul,
+ol {
+    list-style: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.head {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color: #333333;
+}
+.head p{
+    margin: 0;
+    color: #ffffff;
+    position: absolute;
+    left: 28%;
+    top: 50%;
+    margin-top: -11px;
+}
+.head input{
+    width: 200px;
+    height: 20px;
+    position: absolute;
+    left: 50%;
+    margin-left: -100px;
+    top: 50%;
+    margin-top: -13px;
+}
+
+.box {
+   position: absolute;
+   left: 50%;
+   margin-left: -200px;
+}
+
+.demo-box li,
+.donelist li {
+    position: relative;
+    border-radius: 0 30px 30px 0;
+    border-left:5px solid #ffffdd ;
+    background-color: #fbdff0;
+    width: 400px;
+    height: 40px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .3);
+    margin-top: 10px;
+}
+
+.donelist li {
+    background-color: rgba(70, 73, 75, 0.3);
+    border-left:5px solid #5b5656 ;
+}
+
+.demo-box li input,
+.donelist li input {
+    position: absolute;
+    top: 50%;
+    margin-top: -6px;
+    left: 15px;
+}
+
+
+.demo-box li p,
+.donelist li p {
+    position: absolute;
+    /* width: 150px; */
+    left: 43px;
+    margin: 0;
+    line-height: 40px;
+}
+.donelist li p{
+    color: rgb(118, 117, 119);
+}
+.demo-box li a,
+.donelist li a {
+    position: absolute;
+    top: 50%;
+    margin-top: -11px;
+    right: 25px;
+    text-decoration: none;
+    color: inherit;
+
+}
+footer{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    color: #c7c8c9;
+}
