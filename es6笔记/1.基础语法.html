@@ -1,0 +1,45 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-04 17:46:13
+ * @LastEditTime: 2020-03-04 17:53:48
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/es6笔记/1.基础语法.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <script>
+        var btns = document.querySelectorAll("button");
+        for (var i = 0; i < btns.length; i++) {
+            //   这样弹出的都是3
+            //   btns[i].addEventListener("click",function () {
+            //       alert(i);          
+            //   })
+
+            // 为了解决js没有块级作用域，会这样写
+            (function (i) {
+                btns[i].addEventListener("click", function () {
+                    alert(i);
+                })
+            })(i)
+            // 在es里，直接把var改成let即可
+        }
+    </script>
+</body>
+
+</html>

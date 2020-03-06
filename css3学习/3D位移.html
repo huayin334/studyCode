@@ -1,0 +1,44 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-05 11:23:32
+ * @LastEditTime: 2020-03-05 11:37:16
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/css3学习/3D位移.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 透视写在父元素上 */
+        body {
+            /* 近大远小 透视越小 眼睛距离屏幕越近 物体越大 */
+            perspective: 100px;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            /* 注意是逗号分割 */
+            /* x，y，z是不能省略的，如果没有就写0 */
+            transform: translate3d(400px, 100px, 50px);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <script>
+
+    </script>
+</body>
+
+</html>

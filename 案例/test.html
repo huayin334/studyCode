@@ -1,0 +1,30 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-04 15:16:17
+ * @LastEditTime: 2020-03-04 15:31:29
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/案例/test.html
+ -->
+
+
+<script type="text/javascript">
+    window.onload = function () {
+        var oDiv = document.getElementByld("gt1");
+
+        document.onkeydown = function (ev) {
+            //alert(ev.keyCode);
+            if (ev.keyCode == 49) {
+                oDiv.style.left = oDiv.offsetLeft + 10 + 'px';
+                oDiv.style.top = oDiv.offsetTop + 10 + 'px';
+            }
+        }
+    }
+</script>
+
+<div style="width:923px;height:481px;background-image:url(hpan.jpg);">
+        <audio src="hpan.mp3" autoplay loop controls style="position:absolute;left:200px;top:300px;"></audio>
+        <div id="gt1" style="position:absolute;left:200px;top:100px;width:105px;height:150px;
+                           background-image:url(hpan.png);"></div>
+    
+    </div>

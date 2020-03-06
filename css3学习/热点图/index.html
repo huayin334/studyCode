@@ -1,0 +1,110 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-05 09:14:32
+ * @LastEditTime: 2020-03-05 09:53:04
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/css3学习/热点图/index.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .city {
+            position: relative;
+            margin: 30px auto;
+            width: 300px;
+            height: 300px;
+            /* background-color: peachpuff; */
+
+        }
+
+        .dotted {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #0099ff;
+            border-radius: 50%;
+            /* 水平居中 */
+            top: 50%;
+            margin-top: -4px;
+            /* 垂直居中 */
+            left: 50%;
+            margin-left: -4px;
+        }
+        /* 属性选择器  */
+        /* 权重很高 10+1+10=21*/
+        .city div[class^="pulse"]{
+            /* 水平垂直居中 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #009dfd;
+            animation: pulse 6s linear infinite;
+        }
+        /* 权重 10 */
+        .pulse2{
+            animation-delay: 1s !important;
+        }
+        .pulse3{
+            animation-delay: 2s !important;
+        }
+        .pulse4{
+            animation-delay: 3s !important;
+        }
+        .pulse5{
+            animation-delay: 4s !important;
+        }
+        .pulse6{
+            animation-delay: 5s !important;
+        }
+        @keyframes pulse{
+            /* 可以省略 */
+            0%{ }
+            60%{
+                width: 100px;
+                height: 100px;
+                /* 透明度 不变 */
+                opacity: 1;
+            }
+            100%{
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="map">
+        <div class="city">
+            <!-- 小圆点 -->
+            <div class="dotted"></div>
+            <!-- 波纹 -->
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+            <div class="pulse4"></div>
+            <div class="pulse5"></div>
+            <div class="pulse6"></div>
+
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

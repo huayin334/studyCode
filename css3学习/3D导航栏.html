@@ -1,0 +1,68 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-05 17:32:57
+ * @LastEditTime: 2020-03-05 18:00:34
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/css3学习/3D导航栏.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      *{
+          margin: 0;
+          padding: 0;
+      }
+      ul{
+          margin: 100px;
+          list-style: none;
+      }
+      ul li{
+          width: 120px;
+          height: 35px;
+      }
+      .box{
+          position: relative;
+          width: 100%;
+          height: 100%;
+      }
+      .font,
+      .bottom{
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+      }
+      .front{
+          background-color: pink;
+          z-index: 999;
+      }
+      .bottom{
+          background-color: purple;
+          z-index: -22;
+      }
+    </style>
+</head>
+
+<body>
+      <ul>
+          <li>
+              <div class="box">
+                  <div class="front">我在前面</div>
+                  <div class="bottom">我在底部</div>
+              </div>
+          </li>
+      </ul>
+    <script>
+      
+    </script>
+</body>
+
+</html>
