@@ -1,0 +1,92 @@
+body {
+    /* 初始化 */
+    max-width: 540px;
+    min-width: 320px;
+    margin: 0 auto;
+    font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+    color: #000000;
+    background: #f2f2f2;
+    /* 永远不会出现水平滚动条 */
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+a{
+    text-decoration: none;
+}
+
+/* 搜索模块 */
+.search-index {
+    display: flex;
+    /* 固定定位以屏幕为准 与父亲无关 */
+    position: fixed;
+    top: 0;
+    left: 50%;
+    /* -50%是相对自身宽度 */
+    transform: translateX(-50%);
+    /* 提高兼容性 */
+    -webkit-transform: translateX(-50%);
+    /* 固定的盒子要有宽度 */
+    width: 100%;
+    /* 限制宽度 */
+    max-width: 540px;
+    height: 44px;
+    background-color: transparent;
+}
+
+.search {
+    flex: 1;
+    position: relative;
+    border: 1px solid #cccccc;
+    height: 28px;
+    margin: 6px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #666666;
+    padding-left: 35px;
+    line-height: 26px;
+    background-color: #fff;
+}
+.search::before{
+    content: "";
+    display: block;
+    /* 伪元素的父亲是search 插入它的地方 */
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    width: 21px;
+    height: 21px;
+    background: url(../img/home-common.png) 0 0 no-repeat;
+    background-size: 21px auto;
+    
+}
+
+.user {
+    width: 44px;
+    height: 44px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+}
+
+.user::before{
+    content: "";
+    display: block;
+    /* 我们需要的图片的大小 */
+    width: 21px;
+    height: 21px;
+    /* 精灵图的坐标 此处y轴坐标是负的 图片往上走 */
+    /* 才能得到我们需要的那个小人 */
+    background: url(../img/home-common.png) 0px -36px no-repeat;
+    /* 精灵图的大小，只写宽度，高度自适应 */
+    /* 记住此处的大小是我们对图片进行缩小后的大小 */
+    background-size: 21px auto;
+    margin: 5px auto 0;
+}
+.focus{
+
+}
+.focus img{
+    width: 100%;
+    border-radius: 0 0 60px 30px;
+    
+}

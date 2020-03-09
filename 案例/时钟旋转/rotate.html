@@ -1,0 +1,105 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-07 16:58:32
+ * @LastEditTime: 2020-03-08 15:20:15
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/案例/时钟旋转/rotate.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/JqueryRotato.js"></script>
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+        .time {
+            width: 200px;
+            height: 200px;
+        }
+        .sec {
+            position: absolute;
+            top: 30px;
+            left: 88px;
+            height: 100px;
+        }
+        .min {
+            position: absolute;
+            top: 43px;
+            left: 97px;
+            height: 62px;
+
+        }
+        .hour {
+            position: absolute;
+            top: 50px;
+            left: 94px;
+            height: 59px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="img/time.jpg" alt="" class="time">
+        <img src="img/hour.png" alt="" class="hour">
+        <img src="img/sec.png" alt="" class="sec">
+        <img src="img/min.png" alt="" class="min">
+    </div>
+
+    <script>
+        var degmin = 0;
+        var degsec = 0;
+        var deghour = 0;
+        var min = document.querySelector(".min");
+        var sec = document.querySelector(".sec");
+        var hour = document.querySelector(".hour");
+        window.onload = function () {
+            function getTime() {
+                var nowtime = new Date();
+                var hourtime = nowtime.getHours();
+                hour = hour > 12 ? hour - 12 : hour;
+                var mintime = nowtime.getMinutes();
+                var sectime = nowtime.getSeconds();
+                degsec = 6 * sectime;
+                degmin = 6 * mintime;
+                deghour = 30 * hourtime + mintime / 2;
+                min.style.transform = "rotate(" + degmin + "deg)";
+                min.style.transformOrigin = "5px 58px";
+                sec.style.transform = "rotate(" + deghour + "deg)";
+                sec.style.transformOrigin = "12px 70px";
+            }
+            getTime()
+            setInterval(function () {
+                degsec += 6;
+                sec.style.transform = "rotate(" + degsec + "deg)";
+                sec.style.transformOrigin = "12px 70px"
+            }, 1000)
+            setInterval(function () {
+                degmin += 0.1;
+                min.style.transform = "rotate(" + degmin + "deg)";
+                min.style.transformOrigin = "5px 58px"
+            }, 1000)
+            setInterval(function () {
+                // 每100s走1度
+                // 600s=10min 6度
+                deghour += 0.01;
+                hour.style.transform = "rotate(" + deghour + "deg)";
+                hour.style.transformOrigin = "6px 51px"
+            }, 1000)
+
+
+        }
+    </script>
+</body>
+
+</html>

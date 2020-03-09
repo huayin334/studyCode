@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-29 10:10:51
- * @LastEditTime: 2020-02-29 10:46:58
+ * @LastEditTime: 2020-03-06 21:46:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/jquery案例/高亮突出显示.html
@@ -36,6 +36,11 @@
             height: 200px;
             width: 200px;
         }
+        div{
+            width: 300px;
+            height: 399px;
+            background-color: #fff;
+        }
     </style>
     <script src="jquery.min.js"></script>
 </head>
@@ -62,14 +67,24 @@
         </li>
 
     </ul>
+    <input type="text" placeholder="111">
+    <input type="text" placeholder="111">
+    <div onclick="aaa()">333</div>
+ 
     <script>
         $(function () {
             $("ul>li").hover(function () {
+                console.log($("input").eq(1).val());
                 //siblings 除自身外的兄弟元素
                 $(this).siblings().stop().fadeTo(400, 0.5)
             }, function () {
                 $(this).siblings().stop().fadeTo(400, 1)
             })
+         function aaa(){
+             console.log($(this));
+             
+         }
+          
         })
     </script>
 </body>
