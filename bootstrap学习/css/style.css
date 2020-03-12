@@ -1,0 +1,96 @@
+/* ********通用样式********** */
+body {
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: #666666;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #333333;
+}
+
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 当屏幕宽度大于1280时 手动修改container的宽度为1280px */
+@media screen and (min-width:1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+.col-md-2 .logo img {
+    width: 100%;
+}
+
+/* 去掉左侧的padding */
+header {
+    padding-left: 0 !important;
+}
+
+.nav {
+    background-color: #cccccc;
+}
+
+.nav ul {
+    width: 100%;
+}
+
+.nav a {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 30px;
+
+}
+
+.nav a:hover {
+    background-color: #fff;
+}
+
+.news li {
+ 
+    width: 25%;
+    float: left;
+    padding-right: 10px;
+    height: 128px;
+}
+.news li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color:#fff;
+}
+.news li:nth-child(1){
+    width: 50%;
+
+    height: 266px;
+}
+.news li:nth-child(1) p{
+    line-height: 41px;
+}
+.news li img{
+    width: 100%;
+    height: 100%;
+}
+.news li p{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 41px;
+    padding: 0 14px;
+    background-color: rgba(0,0,0,.5);
+    font-size: 12px;
+    margin-bottom: 0;
+}

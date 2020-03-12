@@ -1,0 +1,141 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-11 08:16:03
+ * @LastEditTime: 2020-03-12 08:58:16
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/es6笔记/2.tab栏切换.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .box {
+            width: 650px;
+            border: 1px solid #333333;
+            margin: 10px auto;
+            padding: 5px;
+            height: 300px;
+        }
+
+        .firstnav {
+            width: 600px;
+        }
+
+        .liactive {
+            background-color: teal!important;
+            /* border: 0px solid #ffffff!important; */
+        }
+
+        .firstnav ul li {
+            position: relative;
+            float: left;
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            background-color: pink;
+            /* border-left: 1px solid #666666; */
+            /* border-bottom: 1px solid #666666; */
+        }
+
+        .firstnav ul li span:nth-child(1) {
+            line-height: 40px;
+            margin: auto;
+        }
+
+        .firstnav ul li span:nth-child(2) {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            height: 22px;
+            cursor: pointer;
+        }
+
+
+
+        .tabadd span {
+            float: right;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+        }
+
+        /* 清除浮动 */
+        .clearfix::after {
+            content: "";
+            display: block;
+            height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        /* tab内容 */
+        .tabscon {
+            position: relative;
+        }
+
+        .tabscon section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+        .conactive{
+            display: block!important;
+        }
+        .firstnav input{
+            height: 40px;
+            width: 97px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="tab">
+        <!-- tab栏标签 -->
+        <nav class="firstnav clearfix">
+            <ul class="">
+                <li class="liactive"><span>菜单栏</span><span class="iconfont icon-cha"></span></li>
+                <li><span>选项卡</span><span class="iconfont icon-cha"></span></li>
+                <li><span>我也是选项卡</span><span class="iconfont icon-cha"></span></li>
+            </ul>
+            <div class="tabadd">
+                <span>+</span>
+            </div>
+        </nav>
+        <!-- tab内容 -->
+        <div class="tabscon">
+            <section class="conactive">1</section>
+            <section>2</section>
+            <section>3</section>
+        </div>
+    </div>
+
+
+    <script>
+
+    </script>
+    <script src="js/two.js"></script>
+</body>
+
+</html>
