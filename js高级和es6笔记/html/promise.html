@@ -1,0 +1,45 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-16 16:38:57
+ * @LastEditTime: 2020-03-16 16:57:51
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/html/promise.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        /**
+         * 构造函数：promise
+         * 一个非常牛逼闪电的东西
+         */
+        let promise = new Promise((resolve, reject) => {
+            // resolve表示没有问题 会执行then
+            // resolve();
+            // reject表示有问题 会执行catch
+            reject();
+
+        })
+        console.log(promise);
+        // 可以无限调用
+        promise.then(() => console.log('成功'))
+            .then(() => console.log('成功'))
+            .catch(() => console.log('失败'))
+
+    </script>
+</body>
+
+</html>

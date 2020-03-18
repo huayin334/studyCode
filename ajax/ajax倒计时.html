@@ -1,0 +1,134 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-18 15:46:41
+ * @LastEditTime: 2020-03-18 17:08:09
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/ajax/ajax倒计时.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: #000000;
+            color: aliceblue;
+            height: 100px;
+            text-align: center;
+        }
+
+        div span {
+            line-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>倒计时</h2>
+    <div>距离抢购还剩：<span>00:00:01</span></div>
+    <script>
+        // 基于服务器做倒计时
+        // js可以获取时间new Date（） 获取的是客户端时间 但是这个时间客户端可以任意修改
+        // 所以在项目中 如果时间作为重要参考标准 需要使用服务器的时间
+
+        let box = document.querySelector('div'),
+            timeSpan = document.querySelector('div span'),
+            autoTime = null,
+            _severTime = null;
+
+        // =>从服务器获取时间 获取响应头的时间信息即可
+        // 从服务器获取时间会存在一个问题，由于服务器返回数据需要时间
+        // 所以客户端拿到的时间时 已经过去一会了 导致获取的时间与真实时间是有一定误差的
+        // 这个误差越小越好
+        // 1.在ajax状态为2时 就从响应头中获取信息 而不是等到更靠后的状态
+        // 2.请求方式设置为HEAD 只获取响应头的信息即可 不需要响应主体内容
+        // 3.即使我们想向服务器发送一个不存在的请求地址 
+        // 返回的是404状态码 但是响应头信息中会存在服务器的时间（不友好，不要这样做）
+        let queryTime = function queryTime() {
+            // 第二次请求
+            if (_severTime) {
+                _severTime = new Date(_severTime.getTime() + 1000)
+                return _severTime;
+
+            }
+            return new Promise(resolve => {
+                // 第一次请求：把获取结果存储到全局变量
+                let xhr = new XMLHttpRequest();
+                xhr.open('HEAD', 'time.json');
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState === 2 && /^(2|3)\d{2}$/.test(xhr.status)) {
+                        _severTime = new Date(xhr.getResponseHeader('date'));
+                        resolve(_severTime);
+                    }
+                }
+                xhr.send(null);
+            })
+        }
+        queryTime()
+
+        // let computerTime = function computerTime() {
+        //     let nowTime = new Date(),
+        //         把指定的时间字符串转换为标准时间数据，时间字符串支持很多
+        //         也可以写2020-03-18 18:00:00
+        //         也可以只写2020-03-18 后面的时分秒默认00:00:00
+        //         tartime = new Date('2020/03/18 18:00:00'),
+        //         diffTime = tartime - nowTime;
+        //     if (diffTime >= 0) {
+        //         let hours = Math.floor(diffTime / 1000 / 60 / 60),
+        //             min = Math.floor(diffTime / 1000 / 60 % 60),
+        //             sec = Math.floor(diffTime / 1000 % 60)
+        //         hours = hours < 10 ? '0' + hours : hours;
+        //         min = min < 10 ? '0' + min : min;
+        //         sec = sec < 10 ? '0' + sec : sec;
+        //         timeSpan.innerHTML = `${hours} : ${min} : ${sec} `;
+        //     } else {
+        //         // 已经到达
+        //         timeSpan.innerHTML = '-- :-- :--';
+        //         clearInterval(autoTime);
+        //     }
+        // }
+
+        let computerTime = function computerTime() {
+            // 每1s钟客户端都会向服务器发送一个新的请求，这样下去访问用户多，服务器会爆
+            // 解决：创建一个全局变量，记录第一次从服务器获取的时间 每过1s 手动加1s
+            // 减轻服务器压力
+            let promise = queryTime();
+            if (promise instanceof Promise) {
+                promise.then(severTime => {
+                    promise.then(fn)
+                })
+            } else {
+                fn(promise);
+            }
+
+
+            function fn(severTime) {
+                let nowTime = severTime,
+                    tartime = new Date('2020/03/18 18:00:00'),
+                    diffTime = tartime - nowTime;
+                if (diffTime >= 0) {
+                    let hours = Math.floor(diffTime / 1000 / 60 / 60),
+                        min = Math.floor(diffTime / 1000 / 60 % 60),
+                        sec = Math.floor(diffTime / 1000 % 60)
+                    hours = hours < 10 ? '0' + hours : hours;
+                    min = min < 10 ? '0' + min : min;
+                    sec = sec < 10 ? '0' + sec : sec;
+                    timeSpan.innerHTML = `${hours} : ${min} : ${sec} `;
+                } else {
+                    // 已经到达
+                    timeSpan.innerHTML = '-- :-- :--';
+                    clearInterval(autoTime);
+                }
+            }
+        }
+        computerTime()
+        autoTime = setInterval(computerTime, 1000);
+    </script>
+</body>
+
+</html>

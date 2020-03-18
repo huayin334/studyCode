@@ -1,0 +1,86 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-12 17:35:32
+ * @LastEditTime: 2020-03-12 18:16:14
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Ed
+ * @FilePath: /studyCode/案例/查询方法/index.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .search{
+            width: 730px;
+            margin: 20px auto;
+        }
+        .search input{
+            width: 80px;
+            height: 28px;
+            border-radius: 8px;
+        }
+        .search button{
+            height: 28px;
+            width: 61px;
+            background-color: black;
+            color: #ffffff;
+            border: 1px solid #666666;
+            border-radius: 8px;
+        }
+        .search button:hover{
+            background-color: #333333;
+        }
+        .search button:nth-of-type(2){
+            margin: 0 10px;
+        }
+        table,th,td{
+            border: 1px solid #666666;
+        }
+        table{
+            border-collapse: collapse;
+            width: 300px;
+            margin: 20px auto;
+        }
+        th,td{
+            text-align: center;
+            vertical-align: center;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        按照价格查询：<input type="text" class="start"> - <input type="text" class="end">
+        <button class="search-price">搜索</button>
+        按照商品名称查询：<input type="text" class="product"><button class="search-pro">查询</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>产品</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+    </table>
+    <script>
+
+    </script>
+    <script src="index.js"></script>
+</body>
+
+</html>

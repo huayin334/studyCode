@@ -1,0 +1,59 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-16 09:46:15
+ * @LastEditTime: 2020-03-16 10:10:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/html/函数参数默认值.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        /**
+         * 函数默认参数
+         * 主要是为了优化代码
+         */
+
+        // method的默认参数是get
+        function makeAjaxRequest(url, method = 'GET') {
+            // method = method || 'GET';
+            return method;
+        }
+        console.log(makeAjaxRequest('google.com'));
+        console.log(makeAjaxRequest('google.com', 'POST'));
+
+        function User(id) {
+            this.id = id;
+        }
+
+        console.log(new User(1));
+
+        function randomId() {
+            return Math.floor(Math.random() * 99999);
+        }
+
+        console.log(randomId());
+
+        function createAdminUser(user=new User(randomId())) {
+            user.admin = true;
+            return user;
+        }
+
+        console.log(createAdminUser());
+    </script>
+</body>
+
+</html>

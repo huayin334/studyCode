@@ -1,0 +1,80 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-15 19:40:37
+ * @LastEditTime: 2020-03-15 20:59:27
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/html/箭头函数.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        /**
+         * 箭头函数
+         * 解决的问题
+         * 1.缩减代码
+         * 2.改变this的指向(最主要的)
+         */
+        const double = function (number) {
+            return number * 2;
+        }
+        const double1 = number => number * 2;
+        const double2 = (number, number1) => {
+            sum = number + number1;
+            return sum;
+        }
+        console.log(double(12));
+        console.log(double1(22));
+        console.log(double2(11, 22));
+
+        console.log('---------------------');
+        // map一个数组，让数组中的值以double形式展现
+        const numbers = [1, 2, 3];
+        var newNum = numbers.map(number => number * 2);
+
+        console.log(newNum);
+
+        // 改变this指向
+        const team= {
+            mem: ['pink', 'huayin'],
+            team: 'es6',
+            teamSummary: function () {
+                // let self = this;
+                return this.mem.map(function (member) {
+                    // 此处的this是在匿名函数里面 指向window
+                    console.log(this);    
+                    return `${member}属于${this.team}小组`;
+                }.bind(this))
+            }
+        }
+
+        console.log(team.teamSummary());
+        const team2 = {
+            mem: ['pink', 'huayin'],
+            team: 'es6',
+            teamSummary: function () {
+                // let self = this;
+                return this.mem.map ((member)=>{
+                    // 此处的this指向的就是team2
+                    return `${member}属于${this.team}小组`;
+                })                  
+            }
+        }
+        console.log(team2.teamSummary());
+    </script>
+</body>
+
+</html>

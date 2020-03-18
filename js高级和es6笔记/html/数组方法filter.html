@@ -1,0 +1,121 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-15 17:36:31
+ * @LastEditTime: 2020-03-15 18:07:44
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/html/数组方法.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // filter()的使用
+
+        /**
+         * 1.获取数组a中指定类型的对象放到数组b中
+         */
+        var products = [{
+                name: 'a',
+                type: '1'
+            },
+            {
+                name: 'b',
+                type: '2'
+            },
+            {
+                name: 'c',
+                type: '1'
+            },
+            {
+                name: 'd',
+                type: '2'
+            },
+        ];
+        var pro = products.filter(function (product) {
+            return product.type === '1';
+        })
+        console.log(pro);
+
+        /**
+         * 假设有数组a，过滤掉不满足条件的对象
+         * 条件：类型1 数量大于0 价格小于10
+         */
+        var products1 = [{
+                name: 'a',
+                type: '1',
+                quantity: 0,
+                price: 12
+            },
+            {
+                name: 'b',
+                type: '2',
+                quantity: 10,
+                price: 2
+            },
+            {
+                name: 'c',
+                type: '1',
+                quantity: 20,
+                price: 1
+            },
+            {
+                name: 'd',
+                type: '2',
+                quantity: 30,
+                price: 22
+            },
+        ];
+        products1 = products1.filter(function (product) {
+            return product.type === '1' && product.price < 12 && product.quantity > 0;
+        })
+        console.log(products1);
+        /**
+         * 3.假设有两个数组a和b，根据a中的id值 过滤掉b数组不符合的数据
+         * 其实a是对象。。。
+         */
+        var arra = {
+            id: 4,
+            title: "abc"
+        };
+        var arrb = [{
+            id: 4,
+            title: "233233"
+        }, {
+            id: 1,
+            title: "111"
+        }, {
+            id: 14,
+            title: "1414"
+        }, {
+            id: 41,
+            title: "4141"
+        }, {
+            id: 34,
+            title: "3434"
+        }];
+        // arrb = arrb.filter(function (product) {
+        //     return product.id === arra.id;
+        // })
+        function forId(){
+            return arrb.filter(function(arr){
+                return arr.id === arra.id;
+            })
+        }
+        console.log(forId());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-18 15:14:50
+ * @LastEditTime: 2020-03-18 15:44:36
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/ajax/ajax的同步和异步.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        //浏览器是多线程的 浏览器加载js 只给js一个线程 js是单线程的
+
+        // ****************异步****************
+        // 1.创建实例 状态是0
+        let xhr = new XMLHttpRequest();
+        // 2.状态是1
+        xhr.open('GET', 'test.json', true); //异步
+        // onreadystatechange监听ajax状态改变事件 ：
+        // 设置监听之前的有一个状态，
+        // 当后续的状态和设置之前的状态不相同 才会触发这个事件
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 2) {
+                console.log(1);
+            }
+            if (xhr.readyState === 4) {
+                console.log(2);
+            }
+        }
+        // send是发送ajax请求，这个执行证明ajax任务开始      
+        xhr.send();
+        console.log(3);
+        // =>3,1,2
+
+        // ****************同步****************
+        // ajax同步；只要ajax任务没完成 什么都不干
+        // 1.创建实例 状态是0
+        let xhr1 = new XMLHttpRequest();
+        // 2.状态是1
+        xhr1.open('GET', 'test.json', false); //同步
+        // onreadystatechange监听ajax状态改变事件 ：
+        // 设置监听之前的有一个状态，
+        // 当后续的状态和设置之前的状态不相同 才会触发这个事件
+        // 状态为2时 事件触发了 但是ajax没完成 此事件里面的方法并不会执行
+        // 等到ajax完成的时候 状态为4 所以只输出同步2
+        xhr1.onreadystatechange = () => {
+            if (xhr1.readyState === 2) {
+                console.log('同步' + 1);
+            }
+            if (xhr1.readyState === 4) {
+                console.log('同步' + 2);
+            }
+        }
+        // send是发送ajax请求，这个执行证明ajax任务开始      
+        xhr1.send();
+        console.log('同步' + 3);
+        // =>最后只输出同步2和同步3
+
+        let xhr2 = new XMLHttpRequest();
+        xhr2.open('GET', 'test.json', false); //同步
+        // 发送ajax请求 ajax执行完成后才会运行之后的代码
+        xhr2.send();
+        // 运行到这的时候状态已经变为4了
+        // 状态为4的时候才绑定事件 状态已经不会再改变了
+        // 里面的方法不会执行了 因为状态没有发生改变 
+        xhr2.onreadystatechange = () => {
+            if (xhr2.readyState === 2) {
+                console.log('同步2' + 1);
+            }
+            if (xhr2.readyState === 4) {
+                console.log('同步2' + 2);
+            }
+        }  
+        console.log('同步2' + 3);
+        // =>最后只打印 同步23
+    </script>
+</body>
+
+</html>

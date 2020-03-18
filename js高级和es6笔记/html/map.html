@@ -1,0 +1,86 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-16 16:11:15
+ * @LastEditTime: 2020-03-16 16:23:02
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edihtml
+
+ * @FilePath: /studyCode/js高级和es6笔记/html/map.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        /**
+         * 数据结构map
+         * 键值对 与对象不同的是键和值可以是任何类型
+         */
+
+        const map1 = new Map();
+
+        //  设置key键
+        const key1 = 'some string',
+            key2 = {},
+            key3 = function () {};
+
+        // 为key设置value值
+        map1.set(key1, 'Value of key1');
+        map1.set(key2, 'Value of key2');
+        map1.set(key3, 'Value of key3');
+
+        // 获取key对应的value
+        console.log(map1.get(key1));
+
+        // 打印对应的value数量
+        console.log(map1.size);
+
+        //for..of遍历map1中的key和value
+        for (let [key, value] of map1) {
+            console.log(`${key}=${value}`);
+        }
+
+        // 只要key
+        for (let key of map1.keys()) {
+            console.log(key);
+        }
+
+        // 只要value
+        for (let value of map1.values()){
+            console.log(value);      
+        }
+
+        // forEach遍历map1
+        map1.forEach((value,key)=>{
+            console.log(`${key}=${value}`);
+            
+        })
+
+        // 将map1转换成正常的数组
+        const keyValueArray = Array.from(map1);
+        console.log(keyValueArray);
+
+        // 只将key转为数组
+        const keyArray = Array.from(map1.keys())
+        console.log(keyArray);
+
+        // 只将value转为数组
+        const valueArray = Array.from(map1.values())
+        console.log(valueArray);
+        
+        
+    </script>
+</body>
+
+</html>

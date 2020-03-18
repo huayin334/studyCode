@@ -1,0 +1,98 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-16 11:04:25
+ * @LastEditTime: 2020-03-16 15:32:26
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/html/generator生成器.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        /**
+         * generator 生成器
+         * 可以返回多次函数
+         */
+
+        // 不用生成器 斐波那契数列
+        // 返回数列
+        function fib(max) {
+            let a = 0,
+                b = 1,
+                arr = [0, 1];
+            while (arr.length < max) {
+                [a, b] = [b, a + b];
+                arr.push(b);
+            }
+            return arr;
+        }
+        console.log(fib(66));
+
+        // 返回值
+
+        // 迭代器还原生成器的结构
+        function nameIterator(names) {
+            let nextIndex = 0;
+            return {
+                next: function () {
+                    return nextIndex < names.length ? {
+                        value: names[nextIndex++],
+                        done: false
+                    } : {
+                        done: true
+                    }
+                }
+            }
+        }
+        
+        const nameArr = ['hett','huayin','emily'];
+
+        const names = nameIterator(nameArr)
+        console.log(names.next());
+        console.log(names.next());
+        console.log(names.next());
+        console.log(names.next());
+
+        console.log('---------------------');
+
+        function* sayNames(){
+            yield 'huayin';
+            yield 'lake';
+            yield 'hahha';
+        }
+        const name = sayNames();
+        console.log(name.next());
+        console.log(name.next());
+        console.log(name.next());
+        console.log(name.next());
+        
+        console.log('---------------------');
+        // id自增 es生成器
+        function* createIds(){
+            let index = 1;
+            while(true){
+                yield index++;
+            }
+        }
+        const gen = createIds();
+        console.log(gen.next().value);
+        console.log(gen.next().value);
+        console.log(gen.next().value);
+        
+    </script>
+</body>
+
+</html>

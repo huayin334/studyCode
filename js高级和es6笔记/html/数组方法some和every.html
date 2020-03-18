@@ -1,0 +1,86 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-15 18:33:49
+ * @LastEditTime: 2020-03-15 18:55:45
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/html/数组方法some和every.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        /**
+         * 1.计算数组中的每一个电脑的操作系统是否可用
+         * 大于16位操作系统表示可用，否则不可用
+         * 
+         */
+
+        var computers = [{
+                name: 'apple',
+                ram: 16
+            },
+            {
+                name: 'ibm',
+                ram: 4
+            },
+            {
+                name: 'acer',
+                ram: 32
+            },
+            {
+                name: 'win',
+                ram: 64
+            },
+        ];
+
+        var everyCom = true;
+        var someCom = true;
+        everyCom = computers.every(function (arr) {
+            return arr.ram > 16;
+        })
+        someCom = computers.some(function (arr) {
+            return arr.ram > 16;
+        })
+        // 一假即假
+        console.log(everyCom);
+        // 有任意满足的即返回true 一真即真
+        console.log(someCom);
+
+        /**
+         * 2.假定有一个注册页面，判断所有input内容的长度是否大于0
+         */
+        console.log('------------------');
+
+        function Filed(value) {
+            this.value = value;
+        }
+        Filed.prototype.validate = function () {
+            return this.value.length > 0
+        }
+        var username = new Filed('hen');
+        var tele = new Filed('188');
+        var pass = new Filed('mypassworld')
+        // console.log(username.validate()&&tele.validate()&&pass.validate());
+        //判断所有为真
+        var fields = [username, tele, pass];
+        var formIsValid = fields.every(function (field) {
+            return field.validate();
+        })
+        console.log(formIsValid);
+    </script>
+</body>
+
+</html>

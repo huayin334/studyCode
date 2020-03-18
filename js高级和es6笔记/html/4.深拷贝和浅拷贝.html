@@ -1,0 +1,72 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-14 17:09:45
+ * @LastEditTime: 2020-03-14 17:43:45
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/4.深拷贝和浅拷贝.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        var obj = {
+            id: 1,
+            name: 'huayin',
+            color: ['pink', 'green']
+        }
+        var obj2 = {};
+        for (var k in obj) {
+            obj2[k] = obj[k];
+            // console.log(k);
+            console.log(obj2[k]);
+
+
+        }
+        console.log(obj2);
+        console.log(obj2.id);
+        console.log(obj2['id']);
+        obj.name = 'lall';
+        console.log(obj2.name);
+
+        // 原生js实现深拷贝
+        function deepCopy(newobj, oldobj) {
+            for (var k in oldobj) {
+                // 判断属性值属于哪种数据类型
+                // 1.获取属性值oldobj[k]
+                var item = oldobj[k];
+                // 2.判断值是否是数组
+                // 数组也属于object 所以数组要写在前面
+                if (item instanceof Array) {
+                    newobj[k] = [];
+                    deepCopy(newobj[k], item);
+                } else if (item instanceof Object) {
+                    // 3.判断值是否是对象
+                    newobj[k] = {};
+                    deepCopy(newobj[k], item);
+                } else {
+                    // 4.简单数据类型
+                    newobj[k] = item;
+                }
+            }
+        }
+        var o = {};
+        deepCopy(o,obj);
+        console.log(o);
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-13 14:40:13
+ * @LastEditTime: 2020-03-13 15:07:49
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/3.闭包的案例.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <ul class="one">
+        <li>🍓草莓牛奶</li>
+        <li>芝士蛋糕🍰</li>
+        <li>肉松小贝</li>
+        <li>巧克力蛋糕</li>
+    </ul>
+    <ul class="two">
+        <li>🍓草莓牛奶</li>
+        <li>芝士蛋糕🍰</li>
+        <li>肉松小贝</li>
+        <li>巧克力蛋糕</li>
+    </ul>
+    <ul class="three">
+        <li>🍓草莓牛奶</li>
+        <li>芝士蛋糕🍰</li>
+        <li>肉松小贝</li>
+        <li>巧克力蛋糕</li>
+    </ul>
+    <script>
+        //   闭包应用：点击li输出当前li的索引号
+        var lis = document.querySelector('.one').querySelectorAll('li');
+
+        // 1.用动态添加属性的方式获取索引号
+        // for循环是同步任务
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].index = i;
+            // 这里的onclick函数是一个异步任务
+            // 当同步任务执行完，再去执行异步任务
+            lis[i].onclick = function () {
+                console.log(this.index);
+            }
+        }
+
+        var liss = document.querySelector('.two').querySelectorAll('li');
+        // 2.用闭包
+        for (var i = 0; i < liss.length; i++) {
+            // 利用for循环创建了4个立即执行函数
+            // 立即执行函数也称为小闭包
+
+            (function (i) {
+                // console.log(i);
+                liss[i].onclick = function () {
+                    console.log(i);
+
+                }
+            })(i);
+        }
+
+        // 3秒钟之后 打印所有的li元素的内容
+        var lisss = document.querySelector('.three').querySelectorAll('li');
+        for (var i = 0; i < lisss.length; i++) {
+            (function (i) {
+                setTimeout(function () {
+                    console.log(lisss[i].innerHTML);
+                }, 3000)
+            })(i);
+        }
+    </script>
+</body>
+
+</html>

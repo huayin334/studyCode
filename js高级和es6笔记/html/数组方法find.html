@@ -1,0 +1,74 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-15 18:08:17
+ * @LastEditTime: 2020-03-15 18:29:34
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/html/数组方法find.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        /**
+         * 1.假定有一个 数组a 找到符合条件的对象
+         * 
+         */
+        var users = [{
+                name: 'lisan'
+            },
+            {
+                name: 'alex'
+            },
+            {
+                name: 'huayin'
+            },
+        ];
+        var user;
+        // 找到第一个符合条件的时候 不会再往后面执行
+        user = users.find(function (user) {
+            return user.name === 'huayin';
+        })
+        console.log(user);
+
+        /**
+         * 2.对象数组a，根据指定对象条件找到数组中符合条件的对象
+         */
+        var posts = [{
+                id: 1,
+                title: 'node'
+            },
+            {
+                id: 2,
+                title: 'react'
+            }
+        ];
+        var com = {
+            postId: 1,
+            content: 'hello'
+        };
+
+        function forId(posts, com) {
+            return posts.find(function (post) {
+                return post.id === com.postId;
+            })
+        }
+        
+        console.log(forId(posts,com));
+        
+    </script>
+</body>
+
+</html>

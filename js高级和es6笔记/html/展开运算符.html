@@ -1,0 +1,78 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-16 10:15:19
+ * @LastEditTime: 2020-03-16 15:18:06
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/html/展开运算符.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        /**
+         * 展开运算符
+         * 更快 更便捷的操作数组
+         */
+        function addNumbers(num) {
+            return num.reduce((sum, number) => {
+                return sum + number;
+            }, 0)
+        }
+
+        const nums = [1, 2, 3, 4];
+        console.log(addNumbers(nums));
+
+
+        function addNumbers1(a, b, c, d, e) {
+            let num = [a, b, c, d, e];
+            return num.reduce((sum, number) => {
+                return sum + number;
+            }, 0)
+        }
+        console.log((addNumbers1(1, 2, 3, 2, 3)));
+
+        // 用展开运算符优化
+        function addNumbers2(...num) {
+            return num.reduce((sum, number) => {
+                return sum + number;
+            }, 0)
+        }
+        console.log(addNumbers2(12, 3, 12));
+
+        let colors = ['pink', 'red'];
+        let likeColors = ['green', 'yellow'];
+        let fallColors = ['bule', 'purpel']
+        // concat（）方法不会改变原数组
+        // let newColors = colors.concat(likeColors);
+        // 同时代替了push和concat
+        let newColors = ['black', ...colors, ...likeColors, ...fallColors]
+        console.log(newColors);
+
+        // 练习
+
+        function list(...items){
+            // 如果没有milk就加在前面
+            if(items.indexOf('milk')<0){
+                return ['milk',...items]
+            }
+        }
+        console.log(list('pink','hah'));
+        
+        
+    </script>
+</body>
+
+</html>

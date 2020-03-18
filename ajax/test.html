@@ -1,0 +1,36 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-18 09:03:46
+ * @LastEditTime: 2020-03-18 10:05:57
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/ajax/test.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://yapi.demo.qunar.com/mock/90157/huyin?id=1');
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(JSON.parse(xhr.responseText));
+            }
+        }
+        xhr.send(null)
+    </script>
+</body>
+
+</html>

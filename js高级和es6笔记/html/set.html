@@ -1,0 +1,83 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-16 16:23:27
+ * @LastEditTime: 2020-03-16 16:37:52
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/html/set.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        /**
+         * 数据结构：set
+         * 集合：可以存储任何数据结构，并且是唯一的（不重复的值）
+         */
+
+        const set1 = new Set();
+        //   往里面添加数据
+        set1.add(100);
+        set1.add('string');
+        set1.add({
+            name: 'huayin'
+        });
+        set1.add(true)
+        console.log(set1);
+        const set2 = new Set([1, 2, true, 'string']);
+        console.log(set2);
+
+        //计算set1中的数据个数
+        // 重复的是不会算进去的
+        console.log(set1.size);
+
+        //检查set中是否拥有对应的值
+        console.log(set1.has(100));
+        console.log(set1.has(50 * 2));
+
+        console.log(set1.has({
+            name: 'huayin'
+        }));
+        // 匹配的不是值，匹配的是地址 所以是false
+        console.log({
+            name: 'huayin'
+        } === {
+            name: 'huayin'
+        });
+
+        // 删除
+        set1.delete(100);
+        console.log(set1);
+        console.log('=-------------------=');
+
+        // 遍历for..of
+        for (let item of set1) {
+            console.log(item);
+
+        }
+
+        //    forEach遍历
+        set1.forEach((value)=>{
+            console.log(value);        
+        })
+
+        // 将set转换成array
+        const setArr =Array.from(set1)
+        console.log(setArr);
+        
+    </script>
+</body>
+
+</html>

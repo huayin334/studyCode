@@ -1,0 +1,52 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-14 19:40:09
+ * @LastEditTime: 2020-03-15 17:27:00
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/5.表单验证(正则).html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .right {
+            color: aquamarine;
+        }
+
+        .wrong {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text"> <span>请输入用户名</span>
+    <script>
+        var input = document.querySelector('input');
+        var span = document.querySelector('span')
+        var reg = /^[a-zA-Z0-9_-]{6,16}$/;
+        input.onblur = function () {
+            var text = input.value;
+            var result = reg.test(text);
+            if (result) {
+                span.className = "right";
+                span.innerHTML = '正确';
+            } else {
+                span.className = "wrong";
+                span.innerHTML = '错误';
+            }
+        }
+        var a = /^abc{3}$/
+        var b = 'aabccc';
+        console.log(a.test(b));
+    </script>
+
+</body>
+</html>

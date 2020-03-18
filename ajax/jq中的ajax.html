@@ -1,0 +1,54 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-18 17:10:06
+ * @LastEditTime: 2020-03-18 17:37:40
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/ajax/jq中的ajax.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <script src="../jquery案例/jquery.js"></script>
+    <script>
+        $.ajax({
+            url: 'http://yapi.demo.qunar.com/mock/90157/huyin',
+            method: 'POST',
+            /**
+             * 
+             * data可以是对象或字符串 一般用对象
+             * 如果是对象类型 jq会把对象转换成 xxx=xx&xx=xxx 的模式
+             * post时 是请求主体传参
+             * get时 是问号传参
+             */
+            data: {
+                name: 'huayin',
+                age: '22'
+            },
+            dataType: 'json',
+            // 默认是true 表示异步
+            async: true,
+            // 默认是true 为false时不再缓存页面
+            cache: true,
+            success: () => {
+                console.log('成功啦');
+            },
+            error: () => {
+
+            }
+        })
+    </script>
+</body>
+
+</html>
