@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-16 16:38:57
- * @LastEditTime: 2020-03-16 16:57:51
+ * @LastEditTime: 2020-03-19 11:32:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/js高级和es6笔记/html/promise.html
@@ -20,11 +20,13 @@
 </head>
 
 <body>
-
+    <script src="../../jquery案例/jquery.min.js"></script>
     <script>
         /**
          * 构造函数：promise
          * 一个非常牛逼闪电的东西
+         * 用来管理异步操作 解决回调地狱
+         * Promise是es6中新增的内置类 每一个实例都可以管理一个异步操作
          */
         let promise = new Promise((resolve, reject) => {
             // resolve表示没有问题 会执行then
@@ -38,7 +40,52 @@
         promise.then(() => console.log('成功'))
             .then(() => console.log('成功'))
             .catch(() => console.log('失败'))
+        console.log('--------------------------');
 
+        /**
+         * 必须传一个回调函数进去（回调函数中管理你的异步操作）！！
+         * resolve:异步操作成功做的事情（指成功后的事件队列=>成功后的所有要做的事情）
+         * reject：异步操作失败的事情
+         * new Promise的时候 就立即把回调函数执行了 Promise是同步的
+         * 每一个then都是管理上一个then的成功或是失败
+         * then里面不建议写2个方法 只写成功的 而失败的写在catch中
+         */
+        let promise1 = new Promise((resolve, reject) => {
+            $.ajax({
+                url: 'post.json',
+                success(result) {
+                    resolve(result);
+                },
+                error(msg) {
+                    reject(msg);
+                }
+            })
+        })
+
+        promise1.then(
+            result => {
+                console.log('then1');
+                return 'yes'
+            }
+        ).catch(msg => {
+            // 异步请求失败和第一个then失败都会执行这个catch
+            console.log('catch1');
+        }).then(
+            result => {
+                console.log('then2');
+            }
+        ).catch(msg => {
+            //管控上一次的promise和兄弟then（上一个then）
+            console.log('catch2');
+
+        }).finally(
+            // 不管是成功还是失败都会执行
+            ()=>{
+                console.log('11');      
+            }
+        )
+
+        // =>Promise
     </script>
 </body>
 

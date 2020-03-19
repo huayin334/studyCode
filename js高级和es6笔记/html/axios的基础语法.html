@@ -1,0 +1,82 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-19 11:36:16
+ * @LastEditTime: 2020-03-19 12:45:43
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/html/axios的基础语法.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <script src="../../node_modules/axios/dist/axios.min.js"></script>
+    <script>
+        /**
+         * axios：是一个类库，基于promise管理的ajax库：避免掉入回调地狱
+         * 
+         * 1.提供了对应请求方式的方法（例如：get/post/head/delete/put/options..)
+         * axios.get()基于get方式向服务器发送请求
+         * 
+         * 2.支持的参数配置
+         * axios.get([url],[options])
+         * 
+         * 3.基于get或者post方法发请求，返回的结果都是promise实例
+         */
+        let promise = axios.get('post.json', {
+            params: {
+                // get请求中，会把params中的键值对拼接成urlencode格式的字符串，
+                // 然后以问号传参的方式，传递给服务器，类似于jq-ajax中的
+                name: 'huayin',
+                age: 22
+            }
+        }).then(
+            res => {
+                // res是一个对象
+                // res.data是从服务器获取的响应主体内容
+                console.log(res.data);
+                // res.headers响应头信息
+                console.log(res.headers);
+                // res.request创建的ajax实例
+                console.log(res.request);
+                console.log(res);
+            }
+        ).catch(
+            msg => {
+                // 请求失败的原因
+                console.log(msg);
+            }
+        )
+        // axios.post('post.json', {    
+        //         // 配置项中传递的内容都相当于基于请求主体传递给服务器，
+        //         // 但是传递给服务器的内容格式是raw（json格式的的字符串）
+        //         name: 'huayin',
+        //         age: 22
+        // })
+
+        console.log(promise);
+        // 存放多个ajax请求的promise实例
+        let sendAry = [
+            axios.get('post.json'),
+            axios.get('test.txt')
+        ];
+        // 当以上请求都成功时，才执行
+        axios.all(sendAry).then(res=>{
+            console.log('啦啦啦');  
+            // res存放了所有请求的请求结果，是一个数组
+            console.log(res);         
+        })
+    </script>
+</body>
+
+</html>
