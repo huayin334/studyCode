@@ -1,0 +1,82 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-21 16:22:00
+ * @LastEditTime: 2020-03-21 16:48:04
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/19.动画.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            background-color: pink;
+            width: 100px;
+            height: 100px;
+        }
+        /* 2.自定义两组样式 来控制transition内部的元素实现动画 */
+        /* v-enter 是进入之前 元素的起始状态 此时还没有开始进入 */
+        /* v-leave-to 是离开之后的状态 */
+        .v-enter,
+        .v-leave-to{
+            opacity: 0;
+            transform: translateX(150px);
+        }
+        /* 入场动画的时间段和离场动画的时间段 */
+        .v-enter-active,
+        .v-leave-active{
+           transition: all .8s ease;
+        }
+        /* my前缀在transition标签里面加 name=‘’ */
+        .my-enter,
+        .my-leave-to{
+            opacity: 0;
+            transform: translateY(150px);
+        }
+        /* 入场动画的时间段和离场动画的时间段 */
+        .my-enter-active,
+        .my-leave-active{
+           transition: all .8s ease;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 点击出现  再点击隐藏 -->
+   
+        <button @click='tog'>点击切换</button>
+        <!-- 1.使用transition元素 把需要被动画控制的元素包裹起来 -->
+        <transition>
+                <div v-if='flag' class="box"></div>
+        </transition>
+        <transition name='my'>
+                <div v-if='flag' class="box"></div>
+        </transition>
+    
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                flag: true
+            },
+            methods: {
+                tog() {
+                    this.flag = !this.flag;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

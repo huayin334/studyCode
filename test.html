@@ -1,0 +1,45 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-21 12:00:42
+ * @LastEditTime: 2020-03-21 12:09:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/test.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        function showMoney() {
+            console.log(this.money);
+        }
+        var personA = new Object;
+        var personB = new Object;
+        personA.money = '100';
+        personB.money = '150';
+        console.log(showMoney);    
+        personA.showMone = showMoney;
+        personB.showMoney = showMoney;
+        console.log(personA.showMoney);    
+        personA.showMone();
+        personB.showMoney();
+        console.log(personA);
+        
+
+
+    </script>
+</body>
+
+</html>

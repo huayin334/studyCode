@@ -1,0 +1,63 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-21 20:01:10
+ * @LastEditTime: 2020-03-21 20:09:23
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/26.为什么组件中的data要是一个函数.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <counter></counter>
+        <counter></counter>
+    </div>
+    <template id="my1">
+        <div>
+            <h5>你点了我{{num}}次</h5>
+            <button @click='add'>点我</button>
+        </div>
+    </template>
+    <script src="../vue.js"></script>
+
+    <script>
+        // let dataObj = {
+        //     num: 0
+        // }
+        Vue.component('counter', {
+            template: '#my1',
+            // 一定要把data定义为函数，且return一个对象
+            // 不然的话组件直接会相互影响
+            data: function () {
+                return {
+                    num: 0
+                };
+            },
+            methods: {
+                add() {
+                    this.num++;
+                }
+            },
+        })
+        const app = new Vue({
+            el: '#app',
+            data: {},
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-21 19:23:06
+ * @LastEditTime: 2020-03-21 19:28:55
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/24.私有组件.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <login></login>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            // 私有过滤器
+            filters: {},
+            // 私有指令
+            directives: {},
+            // 私有组件
+            components: {
+                login:{
+                    template:'<h3>私有的组件</h3>'
+                }
+            },
+            
+
+
+            // 生命周期钩子函数
+            beforeCreate() {},
+            created() {},
+            beforeMount() {},
+            mounted() {},
+            beforeUpdate() {},
+            updated() {},
+            beforeDestroy() {},
+            destroyed() {},
+
+        });
+    </script>
+</body>
+
+</html>

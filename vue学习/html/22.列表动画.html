@@ -1,0 +1,120 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-21 18:27:52
+ * @LastEditTime: 2020-03-21 18:53:05
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/22.列表动画.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li {
+            border: 1px dashed #999;
+            margin: 5px;
+            line-height: 35px;
+            padding-left: 5px;
+            font-size: 12px;
+            width: 100%;
+        }
+
+        li:hover {
+            background-color: plum;
+            transition: all .8s ease;
+        }
+
+        /* 添加和删除列表项时候的动画 */
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            transform: translateY(80px);
+        }
+
+        .v-enter-active,
+        .v-leave-active {
+            transition: all .6s ease;
+        }
+
+        /* 删除列表项时候的动画 下面的li会慢慢上来 */
+        .v-move{
+            transition: all 0.5s ease;
+        }
+        .v-leave-active{
+            position: absolute;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <label>
+                id:
+                <input type='text' v-model='id'>
+            </label>
+            <label>
+                name:
+                <input type='text' v-model='name'>
+            </label>
+            <input type="button" value="添加" @click='add'>
+        </div>
+        <!-- <ul> -->
+            <!-- 在实现列表过渡的效果时 不能用transition包裹=>包裹单个元素 需要使用transitionGroup -->
+            <!-- appear实现入场效果 -->
+            <!-- tag指定渲染为ul  不指定就默认渲染为span-->
+            <transition-group appear tag='ul'>
+                <li v-for='(item,i) in list' :key='item.id' @click='del(i)'>{{item.id}}--{{item.name}}</li>
+            </transition-group>
+       
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                id: '',
+                name: '',
+                list: [{
+                        id: 1,
+                        name: 'huayin1'
+                    },
+                    {
+                        id: 2,
+                        name: 'huayin2'
+                    },
+                    {
+                        id: 3,
+                        name: 'huayin3'
+                    },
+                    {
+                        id: 4,
+                        name: 'huayin4'
+                    }
+                ]
+            },
+            methods: {
+                add() {
+                    this.list.push({
+                        id: this.id,
+                        name: this.name
+                    })
+                    this.id = '';
+                    this.name = ''
+                },
+                del(i) {
+                    this.list.splice(i, 1)
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

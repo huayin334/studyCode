@@ -1,0 +1,93 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-21 14:29:06
+ * @LastEditTime: 2020-03-21 15:44:24
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/18.从数据库获取列表.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table,
+        tr,
+        th {
+            border: 1px solid #666666;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            padding: 10px 20px;
+        }
+
+        table tbody tr:nth-of-type(2n+1) {
+            background-color: #cccccc;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>id</th>
+                    <th>age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for='item in list'>
+                    <th>{{item.name}}</th>
+                    <th>{{item.id}}</th>
+                    <th>{{item.age}}</th>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+    <script src="../vue.js"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <script>
+        // 根域名 每次单独发起http请求的时候 请求的url路径应该以相对路径开头 前面不能带斜线
+        Vue.http.options.root = 'http://yapi.demo.qunar.com/mock/90157/';
+        // 全局启用emulateJSON选项
+        // post第三个参数！！！
+        Vue.http.options.amulateJSON = true;
+        const app = new Vue({
+            el: '#app',
+            data: {
+                list: []
+            },
+            // 第二个生命周期函数 data和methods初始化完毕之后就会调用
+            created() {
+                this.getInfo()
+            },
+            methods: {
+                getInfo() {
+                    this.$http.get('huyin').then(res => {
+                        if (res.status === 200) {
+                            this.list = res.data;
+                        } else {
+                            alert('未知原因，请求失败～')
+                        }
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

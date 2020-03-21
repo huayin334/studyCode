@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-16 16:38:57
- * @LastEditTime: 2020-03-19 11:32:32
+ * @LastEditTime: 2020-03-21 16:21:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/js高级和es6笔记/html/promise.html
@@ -55,6 +55,10 @@
                 url: 'post.json',
                 success(result) {
                     resolve(result);
+                    console.log(resolve(result));
+                    console.log(result);
+                    
+                    
                 },
                 error(msg) {
                     reject(msg);

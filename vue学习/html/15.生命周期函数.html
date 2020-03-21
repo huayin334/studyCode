@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-20 19:50:48
- * @LastEditTime: 2020-03-20 21:13:10
+ * @LastEditTime: 2020-03-21 10:15:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/vue学习/html/15.生命周期函数.html
@@ -21,7 +21,9 @@
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <h3 id="h3">{{msg}}</h3>
+    </div>
 
     <script src="../vue.js"></script>
     <script>
@@ -32,8 +34,30 @@
          */
         const app = new Vue({
             el: '#app',
-            data: {},
-            methods: {}
+            data: {
+                msg: 'hhh'
+            },
+            methods: {},
+            // 第一个生命周期函数
+            beforeCreate() {
+                // console.log(msg);
+                // 此时data和methods中的数据都没有初始化
+            },
+            // 第二个生命周期函数
+            created() {
+                // 此时data和methods已经被初始好了，里面的数据也可以用了
+                console.log(this.msg);
+            },
+            // 第三个生命周期函数 mount：挂载
+            beforeMount() {
+                // 此时页面中的元素，还没有被替换过来，还是之前写的{{msg}}
+                console.log(document.querySelector('#h3').innerHTML);
+            },
+            // 第四个生命周期函数
+            mounted() {
+                // 已经挂载了 页面被渲染好了
+                console.log(document.querySelector('#h3').innerHTML);
+            },
         });
     </script>
 </body>
