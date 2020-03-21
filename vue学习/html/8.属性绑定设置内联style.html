@@ -1,0 +1,46 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-20 11:41:28
+ * @LastEditTime: 2020-03-20 14:11:26
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/8.属性绑定设置内联style.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <!--font-weight带有短横线 一定要把引号加上!!!!  -->
+        <h1 :style="{color:'red','font-weight':200}">呵呵呵</h1>
+        <h1 :style="opt1">呵呵呵</h1>
+        <h1 :style="[opt1]">哇，放在数组里也可以</h1>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                opt1: {
+                    color: 'red',
+                    'font-weight': 600
+                }
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

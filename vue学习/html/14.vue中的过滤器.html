@@ -1,0 +1,51 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-20 16:25:19
+ * @LastEditTime: 2020-03-20 16:41:28
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/14.vue中的过滤器.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ msg | msgFormat('疯狂1','122') | test}}</p>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        // 定义过滤器 函数的第一个参数永远都是 过滤器管道符前面传来的数据
+        Vue.filter('msgFormat', function (msg, arg, arg2) {
+            // 正则 /g表示全局匹配 用邪恶代替单纯
+            // 第一个参数也可以接受字符串
+            return msg.replace(/单纯/g, arg + arg2);
+        })
+        // 可以调用多个过滤器
+        Vue.filter('test',function(msg){
+            return msg+'====='
+        })
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                msg: '曾经，我也是个单纯的少年，单纯的我，傻傻的问，谁是最单纯的人'
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

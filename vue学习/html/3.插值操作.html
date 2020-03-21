@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 属性选择器 */
+        /* [特有属性] [特有属性=‘值’] [class^='icon'](以icon开头的class) */
+        /* [class$='icon']以icon结尾  [class*='icon']包含icon即可 */
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-cloak解决插值闪烁问题 -->
+        <!-- 插值表达式可以在前后放任意的值 -->
+        <p v-cloak>++++ {{mes}}</p>
+        <!-- v-text和插值表达式{{}}都可以显示mes -->
+        <!-- v-text不会有闪烁问题 但是会覆盖元素中原本的内容-->
+        <h4 v-text='mes'>++++</h4>
+        <!-- 可以把内容当作html放在指定位置 -->
+        <div v-html='mes2'>111</div>
+        <!-- v-bind 是用于绑定属性的指令 此时mytitle是一个变量 而不是值 可以在后面加别的字符串-->
+        <!-- 语法糖 : 只写一个冒号就行啦 -->
+        <input type="button" value="绑定属性的按钮" v-bind:title="mytitle +'123'" >
+        <!-- v-on绑定事件 -->
+        <!-- 语法糖: @ 后面加事件 -->
+        <input type="button" value="绑定事件的按钮" v-on:click='btn'>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                mes: '哈哈',
+                mes2: '<h1>呵呵</h1>',
+                mytitle:'我是自定义的'
+            },
+            methods: {
+                btn:function () {
+                    console.log('hello');
+                    
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

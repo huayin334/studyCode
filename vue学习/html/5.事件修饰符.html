@@ -1,0 +1,81 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-20 10:11:39
+ * @LastEditTime: 2020-03-20 17:13:58
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/5.事件修饰符.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <div @click='div1' class="box">
+            <!-- .stop阻止冒泡 这样点击事件就不会冒泡到div1上面去 加在内层 -->
+            <button @click.stop='btn1'>点我</button>
+        </div>
+        <!-- .prevent 阻止默认事件 -->
+        <a href="https://www.baidu.com/" @click.prevent='linkClick'>我是链接</a>
+        <!-- .capture使用事件捕获 加在外层div上 -->
+        <div @click.capture='div1' class="box">
+            <button @click='btn1'>点我</button>
+        </div>
+        <!-- 使用.self表示只有点击当前元素的时候 才会触发事件处理函数 不负责别人的冒泡行为 -->
+        <div @click.self='div1' class="box">
+            <button @click='btn1'>点我</button>
+        </div>
+        <!-- .once 事件只触发一次 这些是可以串联的-->
+        <div @click.self.once='div1' class="box">
+            <button @click.once='btn1'>点我</button>
+        </div>
+        <div  class="box">
+            <!-- 按键修饰符 按下enter时会触发事件 也可以用keycode -->
+            <input type="text" @keyup.f2='add'>
+        </div>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+
+        // 自定义全局按键修饰符
+        Vue.config.keyCodes.f2=113;
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                btn1: function () {
+                    console.log('点击了我btn1');
+                },
+                div1: function () {
+                    console.log('点击了div1');
+                },
+                linkClick: function () {
+                    console.log('阻止了默认事件');
+                },
+                add:function(){
+                    console.log('按下enter');                   
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

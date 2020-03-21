@@ -1,0 +1,71 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-20 11:22:34
+ * @LastEditTime: 2020-03-20 11:40:06
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/7.通过属性绑定为元素设置class类.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .thin {
+            font-weight: 200;
+        }
+
+        .italic {
+            /* 斜体 */
+            font-style: italic;
+        }
+
+        .active {
+            /* 字间距 */
+            letter-spacing: 0.5em;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 第一种使用方式 传递数组 v-bind：class做数据绑定 -->
+        <!-- 数组中可以使用  三元表达式（较麻烦） -->
+        <h1 :class="['red','italic',flag?'active':'']">哈哈哈哈哈哈哈哈</h1>
+
+        <!-- 也可以使用对象 键是类名（可以不带引号） 值如果是true就激活这个类 -->
+        <h1 :class="['red','italic',{active:flag}]">哈哈哈哈哈哈哈哈</h1>
+
+        <!-- 第二种使用方式 使用对象 属性名可以带引号 也可以不带引号‘’ -->
+        <h1 :class="{active:flag,red:true}">哈哈哈哈哈哈哈哈</h1>
+
+        <!-- 第三种方式 也可以直接把对象放在data里面 -->
+        <h1 :class="opt">哈哈哈哈哈哈哈哈</h1>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                flag: true,
+                opt: {
+                    active: this.flag,
+                    red: true
+                }
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

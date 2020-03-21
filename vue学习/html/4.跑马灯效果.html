@@ -1,0 +1,70 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-20 09:49:06
+ * @LastEditTime: 2020-03-20 10:11:17
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/4.跑马灯效果.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h6 {
+            width: 60px;
+            height: 20px;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <button @click='go'>浪起来</button>
+        <button @click='stop'>别浪</button>
+        <h6>{{mes}}</h6>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                mes: '猥琐发育别浪～稳住我们能赢！',
+                timer: null //定时器
+            },
+            methods: {
+                go: function () {
+                    //防止开启多次定时器
+                    clearInterval(this.timer);
+                    // 或者这样写
+                    // if (this.timer != null) return;
+                    //箭头函数 内部的this永远和外部保持一致 解决this指向问题
+                    this.timer = setInterval(() => {
+                        /**
+                         * 截取字符串 
+                         * （0，1）从0开始 截取到1 不包含1
+                         * （1） 从1开始截取 一直截取到最后 包含1
+                         */
+                        let start = this.mes.substring(0, 1);
+                        let end = this.mes.substring(1);
+                        this.mes = end + start;
+                    }, 1000)
+                },
+                stop: function () {
+                    clearInterval(this.timer);
+                    // 用第二种方式需要重新把timer置为null
+                    // this.timer=null;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

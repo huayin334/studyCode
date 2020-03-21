@@ -1,0 +1,39 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-20 14:22:08
+ * @LastEditTime: 2020-03-20 14:23:45
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/10.v-for迭代数字.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- in 后面放数字 则迭代数组 从1开始 -->
+        <p v-for="count in 10">这是第{{count}}循环</p>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {},
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

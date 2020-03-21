@@ -1,0 +1,77 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-20 14:25:31
+ * @LastEditTime: 2020-03-20 14:39:56
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/11.v-for中key的使用.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <div>
+
+            <label> id:
+                <input type="text" v-model="id">
+            </label>
+            <label> name:
+                <input type="text" v-model="name">
+            </label>
+            <input type="button" value='添加' @click='add'>
+        </div>
+        <!-- v-for循环的时候 key属性只能使用number或string key在使用的时候要用v-bind：key绑定 -->
+        <p v-for="item in list" :key="item.id"><input type="checkbox">{{item.id}}---{{item.name}}</p>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                list: [{
+                        id: 1,
+                        name: '李斯'
+                    },
+                    {
+                        id: 2,
+                        name: '嬴政'
+                    },
+                    {
+                        id: 3,
+                        name: '赵高'
+                    },
+                    {
+                        id: 4,
+                        name: '韩非'
+                    }
+                ],
+                id:'',
+                name:''
+                
+            },
+            methods: {
+                add: function () {
+                    this.list.push({
+                        id: this.id,
+                        name: this.name
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

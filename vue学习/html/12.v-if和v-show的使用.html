@@ -1,0 +1,50 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-20 14:42:15
+ * @LastEditTime: 2020-03-20 14:49:46
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/12.v-if和v-show的使用.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 会将元素从dom中删除 有较高的切换性能消耗-->
+        <h3 v-if='flag'>这是v-if</h3>
+        <!-- 不会将元素从dom中删除 而是给元素加display：none 有较高的初始渲染消耗 -->
+        <!-- 如果频繁显示和隐藏就用v-show 可能永远不显示就用v-if -->
+        <h3 v-show='flag'>这是v-show</h3>
+        <input type="button" value="切换" @click='cli'>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                flag: true
+
+            },
+            methods: {
+                cli: function () {
+                    this.flag = !this.flag
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

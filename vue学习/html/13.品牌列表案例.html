@@ -1,0 +1,217 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-20 14:55:33
+ * @LastEditTime: 2020-03-20 19:48:10
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/13.品牌列表案例.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .tab {
+            background-color: #333333;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        .tab input {
+            height: 28px;
+            border-radius: 2px;
+        }
+
+        table,
+        th {
+            border: 1px solid #666666;
+        }
+
+        tbody tr:nth-of-type(2n+1) {
+            background-color: #cccccc;
+        }
+
+        th {
+            padding: 10px 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            text-align: center;
+            vertical-align: bottom;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="tab">
+            <button>id</button><input type="text" v-model='id'>
+            <button v-fontweight="'800'" v-fontsize="30">name</button> <input type="text" v-model='name'>
+            <button @click='query(keywords)'>查询</button> <input type="text" v-model='keywords' placeholder="搜索关键字"
+                v-focus v-color="'blue'">
+            <!-- 在vue中使用事件绑定机制，为元素指定处理函数的时候，加上小括号就可以传参啦 -->
+            <button @click='add()'>添加</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>品牌</th>
+                    <th>时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for='(item,i) in query(keywords)' :key='item.id'>
+                    <th>{{item.id}}</th>
+                    <th>{{item.name}}</th>
+                    <th>{{item.time | timer}}</th>
+                    <th><a href="javascript:;" @click.prevent='del(item.id)'>删除</a></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        // 全局过滤器
+        Vue.filter('timer', function (dateStr) {
+            let dt = new Date(dateStr)
+            let y = dt.getFullYear();
+            // es6新的字符串方法 padStart 几位数 补什么 从开头补
+            let m = (dt.getMonth() + 1).toString().padStart(2, '0')
+            let d = dt.getDay();
+            d = d > 9 ? d : '0' + d;
+            let h = dt.getHours();
+            h = h > 9 ? h : '0' + h;
+            let mi = dt.getMinutes();
+            mi = mi > 9 ? mi : '0' + mi;
+            let s = dt.getSeconds();
+            s = s > 9 ? s : '0' + s;
+            return `${y}-${m}-${d} ${h}:${mi}:${s}`;
+        })
+        // 参数1:指令的名称 指令的名称前面 不需要加v-前缀 调用的时候必须在指令名称前加上v-
+        // 参数2:是一个对象 有一些指令相关的函数 这些函数
+        Vue.directive('focus', {
+            /**
+             * 元素绑定时 此时元素还没放入dom 会执行一次 且仅执行一次
+             * 第一个参数永远是el，是一个原生的js对象
+             * 元素从内存渲染到
+             */
+            bind: function (el) {
+
+            },
+            // 元素插入到dom中的时候，会执行inserted函数 且仅执行一次
+            inserted: function (el) {
+                console.log('插入');
+                el.focus();
+            },
+            // 当vnode更新的时候 会执行 可能会触发多次
+            updated(el) {
+                console.log('刷新');
+            },
+        })
+
+        Vue.directive('color', {
+            // 样式，只要通过指令绑定给了元素，不管这个元素有没有被插入到页面中去
+            // 这个元素肯定有了一个内联的样式
+            // 注意：与元素绑定的事件不一样 给元素绑定事件要在inserted里面加
+            bind(el, binding) {
+                el.style.color = binding.value;
+                // 和样式相关的操作 一般都可以在bind中操作
+            }
+        })
+        const app = new Vue({
+            el: '#app',
+            data: {
+                id: '',
+                name: '',
+                keywords: '',
+
+                list: [{
+                    id: 1,
+                    name: '奔驰',
+                    time: new Date()
+                }, {
+                    id: 2,
+                    name: '宝马',
+                    time: new Date()
+                }, {
+                    id: 3,
+                    name: '奥迪',
+                    time: new Date()
+                }, {
+                    id: 4,
+                    name: '奥迪',
+                    time: new Date()
+                }]
+            },
+            methods: {
+                add: function () {
+                    id = this.id;
+                    name = this.name;
+                    this.list.push({
+                        id: id,
+                        name: name,
+                        time: new Date()
+                    })
+                },
+                del: function (id) {
+                    this.list.some((item, index) => {
+                        if (item.id === id) {
+                            console.log(index);
+                            this.list.splice(index, 1)
+                            return true;
+                        }
+                    });
+
+                    // 新增方法findIndex(item) 返回index
+                },
+                query: function (keywords) {
+                    // console.log(k);
+                    let newList = [];
+                    this.list.forEach(item => {
+                        if (item.name.indexOf(keywords) != -1) {
+                            newList.push(item);
+                            console.log(newList);
+                        }
+                    });
+                    return newList;
+                }
+            },
+            // 定义私有过滤器
+            filters: {
+                // 过滤器名称  函数
+                filName1: function (date, pa) {
+
+                }
+            },
+            // 自定义私有指令
+            directives: {
+                'fontweight': {
+                    bind: function (el, binding) {
+                        el.style.fontWeight = binding.value;
+                    }
+                },
+                // 简写形式 等同于把代码写到了bind和update中去
+                'fontsize': function (el, binding) {
+                    el.style.fontSize = parseInt(binding.value)+'px'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
