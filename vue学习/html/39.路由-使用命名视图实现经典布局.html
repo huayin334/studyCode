@@ -1,0 +1,94 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-22 19:33:41
+ * @LastEditTime: 2020-03-22 19:49:46
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/39.路由-使用命名视图实现经典布局.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: orange;
+            margin: 0;
+            height: 80px;
+        }
+
+        .container {
+            display: flex;
+            height: 600px;
+        }
+
+        .left {
+            background-color: pink;
+            flex: 2;
+            margin: 0;
+
+        }
+
+        .main {
+            background-color: palegreen;
+            flex: 8;
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <router-view></router-view>
+        <div class="container">
+            <!-- 此处的left是一个值（字符串）  带冒号的时候：才考虑到底是值还是变量 -->
+            <router-view name='left'></router-view>
+            <router-view name='main'></router-view>
+        </div>
+
+    </div>
+
+    <script src="../vue.js"></script>
+    <script src="../vue-router.js"></script>
+    <script>
+        let header = {
+            template: '<h1 class="header">头部</h1>'
+        }
+        let leftBox = {
+            template: '<h1 class="left">左边</h1>'
+        }
+        let mainbox = {
+            template: '<h1 class="main">主体区</h1>'
+        }
+
+        const router = new VueRouter({
+            routes: [{
+                path: '/',
+                components: {
+                    // default left main 是值（字符串
+                    'default': header,
+                    'left': leftBox,
+                    'main': mainbox
+                }
+            }]
+        })
+        const app = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            router
+        });
+    </script>
+</body>
+
+</html>

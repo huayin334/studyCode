@@ -1,0 +1,80 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-22 19:08:08
+ * @LastEditTime: 2020-03-22 19:32:04
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/38.路由-使用children实现路由嵌套.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <router-link to='/account'>点击</router-link>
+        <router-view></router-view>
+
+    </div>
+    <template id="tmp1">
+        <div>
+            <h1>这是account组件</h1>
+            <router-link to="/account/login">登录</router-link>
+            <router-link to="/account/register">注册</router-link>
+            <!-- 也要占位 -->
+            <router-view></router-view>          
+        </div>
+    </template>
+    <script src="../vue.js"></script>
+    <script src="../vue-router.js"></script>
+    <script>
+        // 组件的模板对象
+        let account = {
+            template: '#tmp1'
+        }
+        let login = {
+            template:'<h3>登录</h3>'
+        }
+        let register = {
+            template:'<h3>注册</h3>'
+        }
+        const router = new VueRouter({
+            routes: [{
+                    path: '/account',
+                    component: account,
+                    // 子路由
+                    children:[
+                    {
+                  //不要加斜线 如果加斜线代表是从根路径匹配
+                    path: 'login',
+                    component: login
+                },
+                {
+                    path: 'register',
+                    component: register
+                }
+                    ]
+                }
+               
+            ]
+        })
+        const app = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            router
+        });
+    </script>
+</body>
+
+</html>

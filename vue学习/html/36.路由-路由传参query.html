@@ -1,0 +1,70 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-22 14:19:47
+ * @LastEditTime: 2020-03-22 15:56:34
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/36.路由-redirect重定向.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 如果在路由中使用查询字符串 则不需要修改路由规则的path -->
+        <router-link to='/login?id=10&name=huayin'>登录</router-link>
+        <router-link to='/register'>注册</router-link>
+        <router-view></router-view>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script src="../vue-router.js"></script>
+    <script>
+        let login = {
+            // this就是这个模板字符串本身 所以可以省略this
+            template:'<h3>登录组件---{{$route.query.id}}--{{$route.query.name}}</h3>',
+            // 组件的生命周期 钩子函数
+            created() {
+                // 拿到url问号传参中的数据
+                console.log(this.$route.query);                
+            },
+        }
+        let register = {
+            template:'<h3>注册组件</h3>'
+        }
+        // Vue.component('loginName', login)
+        // Vue.component('registerName', register)
+        let router = new VueRouter({
+            // !!!!此处不带 r
+            routes:[
+                {path:'/login',component:login},
+                {path:'/register',component:register}
+            ]
+        })
+        const app = new Vue({
+            el: '#app',
+            data: {
+                msg:'哈哈'
+            },
+            methods: {},
+            created() {
+                
+            },
+            // 可以简写成router
+            router: router
+        });
+    </script>
+</body>
+
+</html>

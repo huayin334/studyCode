@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-16 16:38:57
- * @LastEditTime: 2020-03-21 16:21:09
+ * @LastEditTime: 2020-03-22 15:32:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/js高级和es6笔记/html/promise.html
@@ -30,9 +30,9 @@
          */
         let promise = new Promise((resolve, reject) => {
             // resolve表示没有问题 会执行then
-            // resolve();
+            resolve();
             // reject表示有问题 会执行catch
-            reject();
+            // reject();
 
         })
         console.log(promise);
@@ -57,14 +57,13 @@
                     resolve(result);
                     console.log(resolve(result));
                     console.log(result);
-                    
-                    
                 },
                 error(msg) {
                     reject(msg);
                 }
             })
         })
+        console.log(promise1);
 
         promise1.then(
             result => {
@@ -84,8 +83,8 @@
 
         }).finally(
             // 不管是成功还是失败都会执行
-            ()=>{
-                console.log('11');      
+            () => {
+                console.log('11');
             }
         )
 

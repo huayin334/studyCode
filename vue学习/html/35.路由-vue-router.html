@@ -1,0 +1,111 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-22 12:33:19
+ * @LastEditTime: 2020-03-22 18:23:41
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/35.路由-vue-router.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .myactive {
+            color: red;
+            font-weight: 800;
+            font-style: italic;
+            font-size: 30px;
+            text-decoration: underline;
+        }
+
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            transform: translateX(140px);
+        }
+
+        .v-enter-active,
+        .v-leace-active {
+            transition: all .4s ease;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- # hash 不推荐 -->
+        <a href="#/login">登录</a>
+        <a href="#/register">注册</a>
+        <!-- 推荐使用这种方式 router-link默认渲染为a标签 使用tag可以更改标签 -->
+        <router-link to="/login" tag="span">登录</router-link>
+        <router-link to="/register">注册</router-link>
+        <!--放置容器当作占位符 路由规则匹配到的组件，就会展示到这里面去  -->
+        <transition mode="out-in">
+            <router-view></router-view>
+        </transition>
+    </div>
+
+    <script src="../vue.js"></script>
+    <!-- 引用路由模块 -->
+    <script src="../vue-router.js"></script>
+    <script>
+        // 组件模板对象
+        let login = {
+            template: '<h5>登录组件</h5>'
+        }
+        let register = {
+            template: '<h5>注册组件</h5>'
+        }
+        // Vue.component('loginName', login)
+        // Vue.component('registerName', register)
+        /**
+         * 创建一个路由对象 导入vue-router对象之后，在window全局对象中
+         * 就有了一个路由的构造函数，叫做VueRouter
+         */
+        let routerObj = new VueRouter({
+            // route//表示路由匹配规则
+            routes: [
+                // 每一个路由规则，都是一个对象，这个规则对象，身上，有两个必须的属性
+                // 属性1:path表示监听 哪个路由链接地址
+                // 属性2:是component，表示 如果路由是前面匹配到的path，则展示component这个组件
+                //    可以 但是不推荐
+                // {
+                //     path: '/',
+                //     component: login
+                // },
+                {
+                    path: '/',
+                    // 重定向 将根路径重定向到/login
+                    redirect: '/login'
+                },
+                {
+                    path: '/login',
+                    // 属性值必须是模板对象 而不是引用名称 不能是loginName loginName是写到html中的
+                    component: login
+                },
+                {
+                    path: '/register',
+                    component: register
+                }
+            ],
+            // 这里设置自己的类名，链接激活时会自动添加
+            linkActiveClass: 'myactive'
+        })
+
+        const app = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            // 将路由规则对象注册到app实例中 用来监听url地址的变化
+            router: routerObj
+        });
+    </script>
+</body>
+
+</html>

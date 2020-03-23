@@ -1,0 +1,59 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-21 20:23:40
+ * @LastEditTime: 2020-03-22 08:49:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/28.组件切换-应用切换动画和mode方式.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            transform: translateX(150px);
+        }
+        .v-enter-active,
+        .v-leave-active{
+            transition: all .5s ease;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <a href="" @click.prevent="comName='login'">登录</a>
+        <a href="" @click.prevent="comName='register'">注册</a>
+        <!-- 通过mode属性，设置切换的模式 -->
+        <transition mode="out-in">
+            <component :is='comName'></component>
+        </transition>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        Vue.component('login', {
+            template: '<h3>登录组件</h3>'
+        })
+        Vue.component('register', {
+            template: '<h3>注册组件</h3>'
+        })
+        const app = new Vue({
+            el: '#app',
+            data: {
+                comName: 'login'
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

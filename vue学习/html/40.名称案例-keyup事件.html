@@ -1,0 +1,51 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-22 20:12:24
+ * @LastEditTime: 2020-03-22 20:18:56
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/40.名称案例-keyup事件.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model='firstname' @keyup='update'>+
+        <input type="text" v-model='lastname' @keyup='update'>=
+        <input type="text" v-model='fullname'>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                firstname: '',
+                lastname: '',
+                fullname: ''
+            },
+            methods: {
+                update() {
+                    if (this.firstname && this.lastname) {
+                        this.fullname = this.firstname + '-' + this.lastname;
+                    }
+
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>

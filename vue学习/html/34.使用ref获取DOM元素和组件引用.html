@@ -1,0 +1,71 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-22 11:34:39
+ * @LastEditTime: 2020-03-22 11:53:06
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/vue学习/html/34.使用ref获取DOM元素和组件引用.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="获取元素" @click='getElement'>
+        <h3 id="myh3" ref='my'>哈哈哈哈天气真好</h3>
+        <login ref="login"></login>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                getElement() {
+                    console.log('开始获取');
+                    // reference 引用
+                    console.log(this.$refs.my.innerHTML);
+                    // 组件也可以引用
+                    console.log(this.$refs.login);
+                    // 组件的方法
+                    this.$refs.login.show();
+                    // 组件的data
+                   console.log( this.$refs.login.name);
+                   
+                    
+                }
+            },
+            components:{
+                'login':{
+                    template:"<h3 @click='show'>登录组件</h3>",
+                    data:function(){
+                        return {
+                            name:'组件的data'
+                        }
+                    },
+                    methods: {
+                        show(){
+                            console.log('login组件的方法');
+                            
+                        }
+                    },
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

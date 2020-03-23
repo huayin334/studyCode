@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-21 20:10:14
- * @LastEditTime: 2020-03-21 20:10:29
- * @LastEditors: your name
+ * @LastEditTime: 2020-03-21 20:24:23
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/vue学习/html/27.组件切换.html
  -->
@@ -21,14 +21,57 @@
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <login v-if='flag'></login>
+        <register v-else></register>
+        <button @click='tog'>切换</button>
+        <!-- vue提供的component，来展示对应名称的组件 :is用来展示要展示的组件的名称-->
+        <!-- 此处要用单引号包裹 代表是字符串 而不是变量 -->
+        <component :is="'register'"></component>
+
+        <a href="javascript:;" @click='log'>登录</a>
+        <a href="javascript:;" @click='res'>注册</a>
+        <!-- 此时就是变量 -->
+        <component :is="comName"></component>
+
+        <!-- vue提供的标签 -->
+        <!-- 展示对应名称的组件 -->
+        <!-- <component :is="comName"></component> -->
+        <!-- 写模版 -->
+        <!-- <template></template> -->
+        <!-- 动画 -->
+        <!-- <transition></transition> -->
+        <!-- 列表动画 -->
+        <!-- <transition-group> </transition-group> -->
+    </div>
 
     <script src="../vue.js"></script>
     <script>
         const app = new Vue({
             el: '#app',
-            data: {},
-            methods: {}
+            data: {
+                flag: false,
+                comName: 'register'
+            },
+            methods: {
+                tog() {
+                    this.flag = !this.flag;
+                },
+                res() {
+                    this.comName = 'register'
+                },
+                log() {
+                    this.comName = 'login'
+                }
+            },
+            components: {
+                login: {
+                    template: '<h3>登录</h3>'
+                },
+                register: {
+                    template: '<h3>注册</h3>'
+                }
+            }
         });
     </script>
 </body>
