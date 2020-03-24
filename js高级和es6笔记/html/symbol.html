@@ -1,0 +1,78 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-24 11:50:14
+ * @LastEditTime: 2020-03-24 12:36:19
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/html/symbol.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        const Hero = (() => {
+            const getRandom = Symbol();
+
+            return class {
+                constructor(attack, hp, defence, s) {
+                    this.attack = attack;
+                    this.hp = hp;
+                    this.defence = defence;
+                    this.s = s
+                }
+
+                gongji() {
+                    //伤害：攻击力*随机数（0.8~1.1)
+                    const dmg = this.attack * this[getRandom](0.8, 1.1);
+                    console.log(dmg);
+                }
+
+                [getRandom](min, max) { //根据最小值和最大值产生一个随机数
+                    return Math.random() * (max - min) + min;
+                }
+            }
+        })();
+
+        const h = new Hero(3, 6, 3, Symbol('hhh'));
+        h.gongji();
+        console.log(h);
+
+        for (k in h) {
+            console.log('遍历h---' + k);
+        }
+        console.log(h);
+        let sy = Symbol('hhh');
+        let a = {
+            [Symbol('hhh')]: 12213,
+            [Symbol('hhh')]: 12213,
+            sy: 12213,
+            as: 'schuuc',
+            a22: Symbol('hhh')
+        }
+        console.log(a);
+        console.log('ok');
+        for (k in a) {
+            console.log(k);
+        }
+        console.log(Object.keys(a));
+        console.log(Object.getOwnPropertyNames(a));
+        console.log(Object.getOwnPropertySymbols(a));
+    console.log();
+    
+        
+    </script>
+</body>
+
+</html>

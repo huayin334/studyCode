@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-23 09:07:31
- * @LastEditTime: 2020-03-23 19:59:12
+ * @LastEditTime: 2020-03-23 21:21:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Ed
  * @FilePath: /studyCode/webpack学习/src/main.js
@@ -30,6 +30,17 @@ import 'bootstrap/dist/css/bootstrap.css'
  * 4.当最后的一个loader调用完毕，会把结果直接交给webpack进行打包合并，最终输出到bundle.js中去
  */
 
+// 1.npm下载
+// 2.导入
+// 发现用命令行下载的vue是阉割版的 只提供了runtime-only模式
+// import Vue from 'vue'
+import Vue from '../node_modules/vue/dist/vue.js'
+const vm = new Vue({
+    el:'#app',
+    data:{
+        msg:'123'
+    }
+})
 $(function(){
     $('li:odd').css('backgroundColor','blue');
     $('li:even').css('backgroundColor',function () {
