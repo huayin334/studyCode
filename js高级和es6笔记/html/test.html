@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-22 14:54:16
+ * @LastEditTime: 2020-03-24 22:45:56
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/js高级和es6笔记/html/test.html
+ -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -7,65 +15,95 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-      
+
     </style>
 </head>
 
 <body>
-      
+
     <script>
-      function toData(obj) {
-            if (obj === null) {
-                return obj;
+        //   function toData(obj) {
+        //         if (obj === null) {
+        //             return obj;
+        //         }
+        //         let arr = [];
+        //         for (let i in obj) {
+        //             let str = i + "=" + obj[i];
+        //             arr.push(str);
+        //         }
+        //         return arr.join("&");
+        //     }
+        //     // 封装Ajax
+        //     function ajax(obj) {
+        //         return new Promise((resolve, reject) => {
+        //             //指定提交方式的默认值
+        //             obj.type = obj.type || "get";
+        //             //设置是否异步，默认为true(异步)
+        //             obj.async = obj.async || true;
+        //             //设置数据的默认值
+        //             obj.data = obj.data || null;
+        //             // 根据不同的浏览器创建XHR对象
+        //             let xhr = null;
+        //             if (window.XMLHttpRequest) {
+        //                 // 非IE浏览器
+        //                 xhr = new XMLHttpRequest();
+        //             } else {
+        //                 // IE浏览器
+        //                 xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        //             }
+        //             // 区分get和post,发送HTTP请求
+        //             if (obj.type === "post") {
+        //                 xhr.open(obj.type, obj.url, obj.async);
+        //                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        //                 let data = toData(obj.data);
+        //                 xhr.send(data);
+        //             } else {
+        //                 let url = obj.url + "?" + toData(obj.data);
+        //                 xhr.open(obj.type, url, obj.async);
+        //                 xhr.send();
+        //             }
+        //             // 接收返回过来的数据
+        //             xhr.onreadystatechange = function() {
+        //                 if (xhr.readyState === 4) {
+        //                     if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+        //                         resolve(JSON.parse(xhr.responseText))
+        //                     } else {
+        //                         reject(xhr.status)
+        //                     }
+        //                 }
+        //             }
+        //         })
+        //     }
+
+        function Foo() {
+            getName = function () {
+                console.log(1);             
             }
-            let arr = [];
-            for (let i in obj) {
-                let str = i + "=" + obj[i];
-                arr.push(str);
-            }
-            return arr.join("&");
+            console.log(this);           
+            return this;
         }
-        // 封装Ajax
-        function ajax(obj) {
-            return new Promise((resolve, reject) => {
-                //指定提交方式的默认值
-                obj.type = obj.type || "get";
-                //设置是否异步，默认为true(异步)
-                obj.async = obj.async || true;
-                //设置数据的默认值
-                obj.data = obj.data || null;
-                // 根据不同的浏览器创建XHR对象
-                let xhr = null;
-                if (window.XMLHttpRequest) {
-                    // 非IE浏览器
-                    xhr = new XMLHttpRequest();
-                } else {
-                    // IE浏览器
-                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                // 区分get和post,发送HTTP请求
-                if (obj.type === "post") {
-                    xhr.open(obj.type, obj.url, obj.async);
-                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                    let data = toData(obj.data);
-                    xhr.send(data);
-                } else {
-                    let url = obj.url + "?" + toData(obj.data);
-                    xhr.open(obj.type, url, obj.async);
-                    xhr.send();
-                }
-                // 接收返回过来的数据
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4) {
-                        if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
-                            resolve(JSON.parse(xhr.responseText))
-                        } else {
-                            reject(xhr.status)
-                        }
-                    }
-                }
-            })
+        Foo.getName = function () {
+            console.log(2);         
         }
+        Foo.prototype.getName = function () {
+            console.log(3);         
+        }
+        var getName = function () {
+            console.log(4);          
+        }
+        function getName() {
+            console.log(5);         
+        }
+        console.log(Foo.getName());//2
+        console.log(getName());//4
+        console.log(Foo().getName());//1
+        console.log(getName());//1
+        console.log(new Foo.getName());//2
+        console.log(new Foo().getName());//3
+        console.log(new new Foo().getName());//3
+        console.log(typeof Foo);
+        
+        
     </script>
 </body>
 
