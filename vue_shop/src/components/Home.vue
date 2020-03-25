@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-24 20:28:11
- * @LastEditTime: 2020-03-25 11:56:45
+ * @LastEditTime: 2020-03-25 14:26:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/vue_shop/src/components/Home.vue
@@ -27,6 +27,8 @@
           unique-opened
           :collapse="isCollapse"
           :collapse-transition="false"
+          router
+          :default-active="$route.path"
         >
           <!-- 一级菜单 -->
           <el-submenu
@@ -40,7 +42,7 @@
             </template>
             <!-- 二级菜单 -->
             <el-menu-item
-              :index="subItem.id + ''"
+              :index="'/'+subItem.path"
               v-for="subItem in item.children"
               :key="subItem.id"
             >
@@ -53,7 +55,10 @@
         </el-menu>
       </el-aside>
       <!-- 页面主体 -->
-      <el-main>Main</el-main>
+      <el-main>
+        <!-- welcome是home的子组件 重定向到welcome 占个位置～ -->
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -101,7 +106,6 @@ export default {
     // 点击按钮 切换菜单的折叠与展开
     toggleCollapse() {
       this.isCollapse = !this.isCollapse
-
     }
   }
 }
