@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-25 12:11:14
- * @LastEditTime: 2020-03-26 08:39:45
+ * @LastEditTime: 2020-03-26 10:09:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/vue_shop/src/components/user/Users.vue
@@ -117,6 +117,7 @@
                 icon="el-icon-delete"
                 circle
                 size="mini"
+                @click="removeUserById(scope.row.id)"
               ></el-button>
             </el-tooltip>
           </template>
@@ -170,7 +171,12 @@
     </el-dialog>
 
     <!-- 修改用户的对话框 -->
-    <el-dialog title="修改用户" :visible.sync="editDialogVisible" width="50%">
+    <el-dialog
+      title="修改用户"
+      :visible.sync="editDialogVisible"
+      width="50%"
+      @close="editDialogClosed"
+    >
       <!-- 内容主体区域 -->
       <el-form
         :model="editForm"
@@ -192,9 +198,7 @@
       <!-- 底部区域 -->
       <span slot="footer" class="dialog-footer">
         <el-button @click="editDialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="editDialogVisible = false"
-          >确定</el-button
-        >
+        <el-button type="primary" @click="editUserInfo()">确定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -253,43 +257,43 @@ export default {
           {
             required: true,
             message: '请输入用户名',
-            trigger: ['blur','change']
+            trigger: ['blur', 'change']
           },
           {
             min: 3,
             max: 10,
             message: '用户名的长度在3-10个字符之间',
-            trigger: ['blur','change']
+            trigger: ['blur', 'change']
           }
         ],
         password: [
           {
             required: true,
             message: '请输入密码',
-            trigger: ['blur','change']
+            trigger: ['blur', 'change']
           },
           {
             min: 5,
             max: 15,
             message: '密码的长度在6-15个字符之间',
-            trigger:['blur','change']
+            trigger: ['blur', 'change']
           }
         ],
         email: [
           {
             required: true,
             message: '请输入邮箱',
-            trigger: ['blur','change']
+            trigger: ['blur', 'change']
           },
-          { validator: checkEmail, trigger: ['blur','change'] }
+          { validator: checkEmail, trigger: ['blur', 'change'] }
         ],
         mobile: [
           {
             required: true,
             message: '请输入手机号',
-            trigger: ['blur','change']
+            trigger: ['blur', 'change']
           },
-          { validator: checkMabile, trigger: ['blur','change'] }
+          { validator: checkMabile, trigger: ['blur', 'change'] }
         ]
       },
       //修改表单的验证规则
@@ -298,17 +302,17 @@ export default {
           {
             required: true,
             message: '请输入用户的邮箱',
-            trigger: ['blur','change']
+            trigger: ['blur', 'change']
           },
-          { validator: checkEmail, trigger: ['blur','change'] }
+          { validator: checkEmail, trigger: ['blur', 'change'] }
         ],
         mobile: [
           {
             required: true,
             message: '请输入手机号',
-            trigger: ['blur','change']
+            trigger: ['blur', 'change']
           },
-          { validator: checkMabile, trigger: ['blur','change'] }
+          { validator: checkMabile, trigger: ['blur', 'change'] }
         ]
       }
     }
@@ -375,11 +379,63 @@ export default {
       })
     },
     // 展示编辑用户的对话框
-    async showEditDialog(id) {  
+    async showEditDialog(id) {
       const { data: res } = await this.$http.get(`users/${id}`)
       if (res.meta.status !== 200) return this.$message.error('查询失败')
       this.editForm = res.data
       this.editDialogVisible = true
+    },
+    // 监听修改用户对话框的关闭事件
+    editDialogClosed() {
+      // 重置表单并且移除验证信息
+      this.$refs.editFormRef.resetFields()
+    },
+    editUserInfo() {
+      this.$refs.editFormRef.validate(async valid => {
+        //进行表单的预验证 假如验证通过 发起请求
+        if (!valid) return this.$message.error('信息不合法')
+        const { data: res } = await this.$http.put(
+          `users/${this.editForm.id}`,
+          {
+            email: this.editForm.email,
+            mobile: this.editForm.mobile
+          }
+        )
+        console.log(res)
+
+        if (res.meta.status !== 200) this.$message.error('更新失败，请重试')
+        // 关闭对话框
+        this.editDialogVisible = false
+        // 更新列表
+        this.getUserList()
+        this.$message.success('修改成功～')
+      })
+    },
+    async removeUserById(id) {
+      // 弹框询问用户是否删除数据
+      const confirmResult = await this.$confirm(
+        '此操作将永久删除该用户, 是否继续?',
+        '提示',
+        {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }
+      ).catch(err => err)
+      //取消 则返回字符串cancel
+      //确定 则返回字符串confirm
+      console.log(confirmResult)
+      if (confirmResult !== 'confirm') {
+        return this.$message.info('已取消删除')
+      }
+      //发起请求删除用户信息
+      const { data: res } = await this.$http.delete(`users/${id}`)
+      if (res.meta.status !== 200) {
+        return this.$message.error('删除失败')
+      }
+      this.$message.success('删除成功')
+      //刷新列表
+      this.getUserList()
     }
   }
 }

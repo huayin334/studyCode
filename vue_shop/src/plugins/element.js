@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-24 14:59:06
- * @LastEditTime: 2020-03-25 16:33:12
+ * @LastEditTime: 2020-03-26 09:26:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edite
  * @FilePath: /studyCode/vue_shop/src/plugins/element.js
@@ -32,7 +32,8 @@ import {
   Switch,
   Tooltip,
   Pagination,
-  Dialog
+  Dialog,
+  MessageBox
 
 } from 'element-ui'
 // 导入弹框
@@ -65,3 +66,4 @@ Vue.use(Pagination)
 Vue.use(Dialog)
 // 需要挂载 这样 只要使用this.$message就可以获取弹框提示
 Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm
