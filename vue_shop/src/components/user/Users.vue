@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-25 12:11:14
- * @LastEditTime: 2020-03-25 22:19:12
+ * @LastEditTime: 2020-03-26 08:39:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/vue_shop/src/components/user/Users.vue
@@ -253,61 +253,62 @@ export default {
           {
             required: true,
             message: '请输入用户名',
-            trigger: 'blur'
+            trigger: ['blur','change']
           },
           {
             min: 3,
             max: 10,
             message: '用户名的长度在3-10个字符之间',
-            trigger: 'blur'
+            trigger: ['blur','change']
           }
         ],
         password: [
           {
             required: true,
             message: '请输入密码',
-            trigger: 'blur'
+            trigger: ['blur','change']
           },
           {
             min: 5,
             max: 15,
             message: '密码的长度在6-15个字符之间',
-            trigger: 'blur'
+            trigger:['blur','change']
           }
         ],
         email: [
           {
             required: true,
             message: '请输入邮箱',
-            trigger: 'blur'
+            trigger: ['blur','change']
           },
-          { validator: checkEmail, trigger: 'blur' }
+          { validator: checkEmail, trigger: ['blur','change'] }
         ],
         mobile: [
           {
             required: true,
             message: '请输入手机号',
-            trigger: 'blur'
+            trigger: ['blur','change']
           },
-          { validator: checkMabile, trigger: 'blur' }
+          { validator: checkMabile, trigger: ['blur','change'] }
         ]
       },
-      editFromRules:{
-              email: [
+      //修改表单的验证规则
+      editFromRules: {
+        email: [
           {
             required: true,
-            message: '请输入邮箱',
-            trigger: 'blur'
+            message: '请输入用户的邮箱',
+            trigger: ['blur','change']
           },
-          { validator: checkEmail, trigger: 'blur' }
+          { validator: checkEmail, trigger: ['blur','change'] }
         ],
         mobile: [
           {
             required: true,
             message: '请输入手机号',
-            trigger: 'blur'
+            trigger: ['blur','change']
           },
-          { validator: checkMabile, trigger: 'blur' }
+          { validator: checkMabile, trigger: ['blur','change'] }
         ]
       }
     }
@@ -374,7 +375,7 @@ export default {
       })
     },
     // 展示编辑用户的对话框
-    async showEditDialog(id) {
+    async showEditDialog(id) {  
       const { data: res } = await this.$http.get(`users/${id}`)
       if (res.meta.status !== 200) return this.$message.error('查询失败')
       this.editForm = res.data
