@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-24 14:59:06
- * @LastEditTime: 2020-03-26 10:44:32
+ * @LastEditTime: 2020-03-29 14:42:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edite
  * @FilePath: /studyCode/vue_shop/src/plugins/element.js
@@ -34,7 +34,10 @@ import {
   Pagination,
   Dialog,
   MessageBox,
-  Tag
+  Tag,
+  Tree,
+  Select,
+  Option
 
 } from 'element-ui'
 // 导入弹框
@@ -66,6 +69,9 @@ Vue.use(Tooltip)
 Vue.use(Pagination)
 Vue.use(Dialog)
 Vue.use(Tag)
+Vue.use(Tree)
+Vue.use(Select)
+Vue.use(Option)
 // 需要挂载 这样 只要使用this.$message就可以获取弹框提示
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
