@@ -44,7 +44,7 @@
             <el-menu-item
               :index="'/'+subItem.path"
               v-for="subItem in item.children"
-              :key="subItem.id"
+              :key="subItem.id" 
             >
               <template slot="title">
                 <i :class="iconsObj[subItem.id]"></i>

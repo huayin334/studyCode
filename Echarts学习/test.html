@@ -1,0 +1,69 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-27 16:16:47
+ * @LastEditTime: 2020-03-27 22:37:50
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /studyCode/Echarts学习/test.html
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .box{
+          width: 300px;
+          height: 300px;
+          margin: 0 auto;
+          background-color: antiquewhite;
+      }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script src="js/echarts.min.js"></script>  
+    <script>
+        let myChart = echarts.init(document.querySelector('.box'));
+       // 指定图表的配置项和数据
+       var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+        // 把配置项给实例对象
+        myChart.setOption(option)
+        function foo(){
+            var a = 2;
+            this.bar()
+            console.log('调用了bar');
+            
+        }
+        function bar(){
+            console.log('bar');
+            console.log(this.a);     
+        }
+        foo()
+        console.log('ok');
+        
+    </script>
+</body>
+
+</html>

@@ -11,10 +11,10 @@
 	},
 	"db_config": {
 		"protocol": "mysql",
-		"host": "rm-bp12814g72d57803qo.mysql.rds.aliyuncs.com",
-		"database": "lvdao_cms",
-		"user": "lvdao_cms",
-		"password": "lvdao_cms@2017",
+		"host": "localhost",
+		"database": "vue_shop_api",
+		"user": "root",
+		"password": "123456",
 		"port": 3306
 	}
 }
