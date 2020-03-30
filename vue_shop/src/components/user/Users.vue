@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-25 12:11:14
- * @LastEditTime: 2020-03-29 15:05:37
+ * @LastEditTime: 2020-03-29 15:24:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/vue_shop/src/components/user/Users.vue
@@ -526,5 +526,8 @@ export default {
 }
 .el-pagination {
   margin-top: 15px;
+}
+.el-table{
+  margin-top: 10px;
 }
 </style>

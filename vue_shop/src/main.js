@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-24 14:56:32
- * @LastEditTime: 2020-03-25 10:29:10
+ * @LastEditTime: 2020-03-29 15:45:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/vue_shop/src/main.js
@@ -12,6 +12,7 @@ import router from './router'
 import './plugins/element.js'
 // 导入全局样式表
 import './assets/css/global.css'
+import TreeTable from 'vue-table-with-tree-grid'
 // 导入axios
 import axios from 'axios'
 // 设置请求的根地址
@@ -29,6 +30,7 @@ Vue.use(axios)
 
 Vue.config.productionTip = false
 
+Vue.component('tree-table',TreeTable)
 new Vue({
   router,
   render: h => h(App)

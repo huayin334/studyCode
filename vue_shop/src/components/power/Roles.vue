@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-26 10:49:20
- * @LastEditTime: 2020-03-29 12:07:03
+ * @LastEditTime: 2020-03-29 15:26:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/vue_shop/src/components/power/Roles.vue
@@ -240,6 +240,9 @@ export default {
 }
 .el-tag {
   margin: 7px;
+}
+.el-table{
+  margin-top: 10px;
 }
 .bdtop {
   border-top: 1px solid #eee;

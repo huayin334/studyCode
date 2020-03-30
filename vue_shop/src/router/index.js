@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-24 14:56:32
- * @LastEditTime: 2020-03-26 10:50:43
+ * @LastEditTime: 2020-03-29 15:16:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/vue_shop/src/router/index.js
@@ -14,6 +14,7 @@ import Welcome from '../components/Welcome.vue'
 import Users from '../components/user/Users.vue'
 import Rights from '../components/power/Rights.vue'
 import Roles from '../components/power/Roles.vue'
+import Cate from '../components/goods/Cate.vue'
 
 // 重写路由的push方法 vue-cli4+的坑 不然跳转不了
 // 好像是对的
@@ -49,6 +50,10 @@ const routes = [{
       {
         path: '/roles',
         component: Roles
+      },
+      {
+        path:'/categories',
+        component:Cate
       }
     ]
   }
