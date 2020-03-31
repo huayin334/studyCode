@@ -20,73 +20,71 @@
 </head>
 
 <body>
-    <input type="button" value="点击我">
-    <a href="">122332</a>
-    <script>
-        let btn = document.querySelector('input');
-        let aEl = document.querySelector('a');
-        btn.addEventListener('click', () => {
-            console.log('ok');
+<div id="div1">
+    <div id="div2">2</div>
+    <div id="div3">2</div>
+    <div id="div4">3</div>
+    <div></div>
+</div>
 
-        })
-        aEl.addEventListener('click', () => {
-            console.log('okaaaa');
+<script>
+    let a = document.querySelector("#div1");
+    console.log(a.childNodes);
 
-        })
-        // btn.click()
-        // // aEl.click()
-        // console.log(Object.prototype.toString.call(1, 2, 3));
-        // console.log(Object.prototype.toString.call([1, 2, 3]));
-        // console.log(Object.prototype.toString.apply([1, 2, 3]));
-        // console.log(Object.prototype.toString.call(/regex-literal/i));
+    // btn.click()
+    // // aEl.click()
+    // console.log(Object.prototype.toString.call(1, 2, 3));
+    // console.log(Object.prototype.toString.call([1, 2, 3]));
+    // console.log(Object.prototype.toString.apply([1, 2, 3]));
+    // console.log(Object.prototype.toString.call(/regex-literal/i));
 
-        // var a;
-        // console.log(a);
-        // console.log(typeof b);
-        // console.log(b);
+    // var a;
+    // console.log(a);
+    // console.log(typeof b);
+    // console.log(b);
 
-        // console.log(null == undefined);//true
-        // console.log(null === undefined);//false
-        // // 这里的objec必须是小写带引号才为true
-        // console.log(typeof null === 'object');//true
-        // console.log(null instanceof Object);//false
-        // console.log(NaN == NaN);//false
-        // console.log(0.1+0.2);
-        // console.log(0.1+0.2===0.3);
-        // console.log(0.1+0.2!=0.3);
-        // console.log(((0.1)*100+(0.2)*100)/100);
-        // console.log(((0.1)*100+(0.2)*100)/100===0.3);
-        // var a = 'a'
-        // console.log(isNaN(1));
-        // console.log(isNaN(a));
+    // console.log(null == undefined);//true
+    // console.log(null === undefined);//false
+    // // 这里的objec必须是小写带引号才为true
+    // console.log(typeof null === 'object');//true
+    // console.log(null instanceof Object);//false
+    // console.log(NaN == NaN);//false
+    // console.log(0.1+0.2);
+    // console.log(0.1+0.2===0.3);
+    // console.log(0.1+0.2!=0.3);
+    // console.log(((0.1)*100+(0.2)*100)/100);
+    // console.log(((0.1)*100+(0.2)*100)/100===0.3);
+    // var a = 'a'
+    // console.log(isNaN(1));
+    // console.log(isNaN(a));
 
-        // //不带参数 创建空数组
-        // let arr1 = new Array();
-        // console.log(arr1);
-        // // 带一个参数，此参数表示数组长度，且数组为空数组
-        // let arr2 = new Array(3);
-        // console.log(arr2);
-        // // 带多个参数，为数组的元素
-        // let arr3 = new Array(4, 23, 34, 43);
-        // console.log(arr3);
+    // //不带参数 创建空数组
+    // let arr1 = new Array();
+    // console.log(arr1);
+    // // 带一个参数，此参数表示数组长度，且数组为空数组
+    // let arr2 = new Array(3);
+    // console.log(arr2);
+    // // 带多个参数，为数组的元素
+    // let arr3 = new Array(4, 23, 34, 43);
+    // console.log(arr3);
 
-        console.log(document.all);
-        console.log(Boolean(document.all));
-        console.log(parseInt(Math.random() * 20 + 10));
-        // [0,1)
-        console.log(Math.random());
-        // [n,m)
-        let n = 5,
-            m = 10;
-        console.log(parseInt(Math.random() * (m - n) + n));
-        // (n,m]
-        console.log(Math.floor(Math.random() * (m - n) + n) + 1);
-        //(n,m)
-        console.log(Math.ceil(Math.random() * (m - n - 1) + n ));
-        //[n,m]
-        console.log(Math.floor(Math.random() * (m - n + 1) + n));
-        
-    </script>
+    console.log(document.all);
+    console.log(Boolean(document.all));
+    console.log(parseInt(Math.random() * 20 + 10));
+    // [0,1)
+    console.log(Math.random());
+    // [n,m)
+    let n = 5,
+        m = 10;
+    console.log(parseInt(Math.random() * (m - n) + n));
+    // (n,m]
+    console.log(Math.floor(Math.random() * (m - n) + n) + 1);
+    //(n,m)
+    console.log(Math.ceil(Math.random() * (m - n - 1) + n));
+    //[n,m]
+    console.log(Math.floor(Math.random() * (m - n + 1) + n));
+
+</script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-24 14:59:06
- * @LastEditTime: 2020-03-30 17:07:24
+ * @LastEditTime: 2020-03-30 20:41:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edite
  * @FilePath: /studyCode/vue_shop/src/plugins/element.js
@@ -38,7 +38,10 @@ import {
   Tree,
   Select,
   Option,
-  Cascader
+  Cascader,
+  Alert,
+  Tabs,
+  TabPane
 
 } from 'element-ui'
 // 导入弹框
@@ -74,6 +77,9 @@ Vue.use(Tree)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(Cascader)
+Vue.use(Alert)
+Vue.use(Tabs)
+Vue.use(TabPane)
 // 需要挂载 这样 只要使用this.$message就可以获取弹框提示
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
