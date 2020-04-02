@@ -6,16 +6,18 @@
  * @Description: In User Settings Edit
  * @FilePath: /studyCode/vue_shop/src/router/index.js
  */
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Login from '../components/Login.vue'
-import Home from '../components/Home.vue'
-import Welcome from '../components/Welcome.vue'
-import Users from '../components/user/Users.vue'
-import Rights from '../components/power/Rights.vue'
-import Roles from '../components/power/Roles.vue'
-import Cate from '../components/goods/Cate.vue'
-import Params from '../components/goods/Params.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Login from "../components/Login.vue";
+import Home from "../components/Home.vue";
+import Welcome from "../components/Welcome.vue";
+import Users from "../components/user/Users.vue";
+import Rights from "../components/power/Rights.vue";
+import Roles from "../components/power/Roles.vue";
+import Cate from "../components/goods/Cate.vue";
+import Params from "../components/goods/Params.vue";
+import Goods from "../components/goods/Goods.vue";
+import Add from "../components/goods/Add.vue";
 
 // 重写路由的push方法 vue-cli4+的坑 不然跳转不了
 // 好像是对的
@@ -24,59 +26,66 @@ import Params from '../components/goods/Params.vue'
 //   return routerPush.call(this, location).catch(error=> error)
 // }
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [{
-    path: '/',
-    redirect: '/login'
-  },
+  path: "/",
+  redirect: "/login"
+},
   {
-    path: '/login',
+    path: "/login",
     component: Login
   },
   {
-    path: '/home',
+    path: "/home",
     component: Home,
-    redirect: '/welcome',
+    redirect: "/welcome",
     children: [{
-        path: '/welcome',
-        component: Welcome
-      }, {
-        path: '/users',
-        component: Users
-      }, {
-        path: '/rights',
-        component: Rights
-      },
+      path: "/welcome",
+      component: Welcome
+    }, {
+      path: "/users",
+      component: Users
+    }, {
+      path: "/rights",
+      component: Rights
+    },
       {
-        path: '/roles',
+        path: "/roles",
         component: Roles
       },
       {
-        path:'/categories',
-        component:Cate
+        path: "/categories",
+        component: Cate
       },
       {
-        path:'/params',
-        component:Params
+        path: "/params",
+        component: Params
+      },
+      {
+        path: "/goods",
+        component: Goods
+      }  ,  {
+        path: "/goods/add",
+        component: Add
       }
     ]
   }
-]
+];
 
 const router = new VueRouter({
   routes
-})
+});
 
 // 挂载路由导航守卫
 router.beforeEach((to, from, next) => {
   // to将要访问的路径
   // from代表从哪个路径跳转而来
   // next是一个函数 表示放行 next('/login')强制跳转到登录页
-  if (to.path === '/login') return next();
+  if (to.path === "/login") return next();
   // 获取token
-  const tokenStr = window.sessionStorage.getItem('token')
-  if (!tokenStr) return next('/login')
-  next()
-})
-export default router
+  const tokenStr = window.sessionStorage.getItem("token");
+  if (!tokenStr) return next("/login");
+  next();
+});
+export default router;

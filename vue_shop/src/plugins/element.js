@@ -14,11 +14,11 @@ import {
   Form,
   FormItem,
   Input,
-  container,
-  header,
-  aside,
-  main,
-  menu,
+  Container,
+  Header,
+  Aside,
+  Main,
+  Menu,
   Submenu,
   MenuItemGroup,
   MenuItem,
@@ -41,7 +41,13 @@ import {
   Cascader,
   Alert,
   Tabs,
-  TabPane
+  TabPane,
+  Steps,
+  Step,
+  CheckboxGroup,
+  Checkbox,
+  Upload
+
 
 } from 'element-ui'
 // 导入弹框
@@ -53,11 +59,11 @@ Vue.use(Button)
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input, Message)
-Vue.use(container)
-Vue.use(header)
-Vue.use(aside)
-Vue.use(main)
-Vue.use(menu)
+Vue.use(Container)
+Vue.use(Header)
+Vue.use(Aside)
+Vue.use(Main)
+Vue.use(Menu)
 Vue.use(Submenu)
 Vue.use(MenuItemGroup)
 Vue.use(MenuItem)
@@ -80,6 +86,11 @@ Vue.use(Cascader)
 Vue.use(Alert)
 Vue.use(Tabs)
 Vue.use(TabPane)
+Vue.use(Steps)
+Vue.use(Step)
+Vue.use(CheckboxGroup)
+Vue.use(Checkbox)
+Vue.use(Upload)
 // 需要挂载 这样 只要使用this.$message就可以获取弹框提示
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
