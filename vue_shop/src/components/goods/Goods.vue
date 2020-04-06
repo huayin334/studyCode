@@ -98,15 +98,15 @@
         const {data: res} = await this.$http.get("/goods", {params: this.queryData});
         if (res.meta.status !== 200) return this.$message.error("获取失败");
 
-        console.log(res.data);
+        // console.log(res.data);
         res.data.goods.forEach(item => {
           item.add_time = this.toDate(item.add_time);
         });
-        console.log(res.data);
+        // console.log(res.data);
         this.total = res.data.total;
 
         this.goodsData = res.data.goods;
-        console.log(this.goodsData);
+        // console.log(this.goodsData);
 
       },
       //  时间戳转日期
@@ -123,7 +123,7 @@
         min = min > 9 ? min : `0${min}`;
         let sec = dates.getSeconds();
         sec = sec > 9 ? sec : `0${sec}`;
-        console.log(`${year}+${mon}+${date}`);
+
         return `${year}-${mon}-${date} ${hour}:${min}:${sec}`;
       },
       //  搜索内容

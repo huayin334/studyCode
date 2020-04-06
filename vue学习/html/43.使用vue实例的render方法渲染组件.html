@@ -10,42 +10,43 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
 
-    </style>
+  </style>
 
 </head>
 
 <body>
-    <div id="app">
-        <!-- <login></login> -->
-        <!-- 里面的东西都会被render返回的html替换掉 -->
-        <p>2324</p>
-    </div>
+<div id="app">
+  <!-- <login></login> -->
+  <!-- 里面的东西都会被render返回的html替换掉 -->
+  <p>2324</p>
+</div>
 
-    <script src="../vue.js"></script>
-    <script>
-        let login = {
-            template: '<h3>登录组件</h3>'
-        }
-        const app = new Vue({
-            el: '#app',
-            data: {},
-            methods: {},
-            components: {
-                'login': login
-            },
-            render(createElements) {
-                // createElements是一个方法 调用它，能够把指定的组件模板，渲染为html结构    
-                return createElements(login);
-                // 返回的结果会替换页面中 el 指定的容器
-            },
-        });
-    </script>
+<script src="../vue.js"></script>
+<script>
+  let login = {
+    template: "<h3>登录组件</h3>"
+  };
+  const app = new Vue({
+    el: "#app",
+    data: {},
+    methods: {},
+    components: {
+      "login": login
+    },
+    render(createElements) {
+      // createElements是一个方法 调用它，能够把指定的组件模板，渲染为html结构
+      return createElements(login);
+      // 返回的结果会替换页面中 el 指定的容器
+
+    }
+  });
+</script>
 </body>
 
 </html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+  </style>
+
+</head>
+
+<body>
+<div id="app">
+  <!--使用组件-->
+  <cpn>
+    <!--组件里的内容会替换掉插槽-->
+    <button>按钮</button>
+  </cpn>
+
+<!--假如不在cpn里写东西，就启用默认的插槽的内容-->
+  <cpn>
+<!--    在这里写slot名字 代表要替换下面的name为slot1的插槽-->
+    <button slot="slot1">?</button>
+  </cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>我是组件，嘻嘻嘻</h2>
+    <slot name="slot1"><button>我是1按钮</button></slot>
+    <slot name="slot2"><button>我是2按钮</button></slot>
+    <slot name="slot3"><button>我是3按钮</button></slot>
+  </div>
+</template>
+<script src="../vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {},
+    methods: {},
+    components: {
+      cpn: {
+        template: "#cpn"
+      }
+    }
+  });
+</script>
+</body>
+
+</html>
