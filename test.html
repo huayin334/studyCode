@@ -2,31 +2,71 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-      
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .f1 {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      box-sizing: content-box;
+      padding-top: 10px;
+      text-align: center;
+    }
+
+    .f1 span {
+      line-height: 60px;
+    }
+
+    .f2 {
+      width: 50px;
+      height: 50px;
+      background-color: pink;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .f2 span {
+      line-height: 50px;
+    }
+    ul{
+      list-style: none;
+      /*overflow: hidden;*/
+    }
+    li{
+      background-color:pink;
+      width: 100px;
+      float: left;
+      padding-bottom: 9999px;
+      margin-bottom: -9999px;
+    }
+  </style>
 </head>
 
 <body>
-      
-    <script>
-        let a = 4;
-        console.log(a)
-        a = 5;
-        console.log(a)
-        let obj = {
-            name:'a',
-            num:2
-        }
-        console.log(obj);
-        obj.num = 3;
-        console.log(obj)
-      
-    </script>
+<div class="f1">
+  <span>123</span>
+</div>
+<div class="f2">
+  <span>456</span>
+</div>
+<ul>
+  <li>erflow:
+    hidden），这样父容器的高度就还是它里面的列没有设定padding-bottom时的高度，当它里面的任一列高度增加了，则
+    父容器的高度被撑到里面最高
+  </li>
+  <li>erflow:
+  </li>
+  <li>erflow:
+    hidden），这样父容器的高度就还是它里面的列没有设定padding-bottom时的高度，当它里面的任一列高度增加了，则
+    父容器的高度被撑到里面最高那列的高度，其他比这列矮的列会用它们的padding-bottom补偿这部分高度差。
+  </li>
+</ul>
+<script>
+
+</script>
 </body>
 
 </html>
