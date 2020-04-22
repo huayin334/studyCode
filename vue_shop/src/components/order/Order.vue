@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg">
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
@@ -8,7 +8,7 @@
     </el-breadcrumb>
 
     <!--卡片视图区-->
-    <el-card>
+    <el-card class="cd">
       <!--搜索框-->
       <el-row>
         <el-col :span="8">
@@ -21,7 +21,9 @@
       <!--商品列表-->
       <el-table
         :data="orderList"
-        style="width: 100%" border stripe>
+        :header-cell-style="tableHeaderColor"
+        :row-style="tableRowStyle">
+        style="width: 100%" stripe>
         <el-table-column type="index" label="#" width="50"></el-table-column>
         <el-table-column label="订单编号" prop="order_number" width="300"></el-table-column>
         <el-table-column label="订单价格" prop="order_price"></el-table-column>
@@ -41,8 +43,9 @@
         </el-table-column>
       </el-table>
 
-      <!--      分页区域-->
+      <!--  分页区域-->
       <el-pagination
+        class="feny"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="queryInfo.pagenum"
@@ -187,6 +190,19 @@
         console.log(res);
         this.progressDataList = res.data;
         this.progressVisible = true;
+      },
+      // 修改table tr行的背景色
+      tableRowStyle({row, rowIndex}) {
+        return {
+          "background-color": "#283962",
+          "color": "#d6c572"
+        };
+      },
+      // 修改table header的背景色
+      tableHeaderColor({row, column, rowIndex, columnIndex}) {
+        if (rowIndex === 0) {
+          return "background-color: #283962;color: #fff;font-weight: 500;";
+        }
       }
     }
   };
@@ -195,5 +211,74 @@
 <style lang='less' scoped>
   .el-cascader {
     width: 100%;
+  }
+
+  .el-row {
+    background-color: #293a61;
+  }
+
+  .el-col-8 {
+    background-color: #293a61;
+  }
+
+  .cd, .bg, .el-main {
+    background-color: #2a3b60 !important;
+    color: #fef0f0;
+  }
+
+  .current-row > td {
+    background: rgba(0, 158, 250, 0.219) !important;
+  }
+
+  .el-main {
+    background-color: #293a61 !important;
+  }
+
+  .feny {
+    /*background-color: #449ad7!important;*/
+  }
+
+  .el-breadcrumb {
+    padding: 15px 0 0 10px;
+  }
+
+  /*内联元素居中*/
+  .text {
+    text-align: center; //内联元素水平居中
+    line-height: 100px; //垂直居中 和父元素高度设为一样
+  }
+
+  /*  块状元素居中*/
+  .box {
+    width: 100px; //有固定高度
+    margin: 0 auto; //水平居中
+  }
+
+  /*块状元素水平垂直居中*/
+  .box1 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .box2 {
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: pink; /*方便看效果*/
+  }
+/*  flex布局 父元素*/
+  .div{
+    display: flex;
+    justify-content: center;//水平
+    align-items: center;//垂直
   }
 </style>

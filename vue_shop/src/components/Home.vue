@@ -10,10 +10,11 @@
   <el-container class="home-container">
     <!-- 头部区域 -->
     <el-header>
-      <div>
-        <img src="../assets/logo.png" alt="" /><span>后台管理系统</span>
+      <div class="he">
+        <img src="../assets/logo.png" alt=""/><span>后台管理系统</span>
       </div>
-      <el-button type="info" @click="logout">退出</el-button></el-header
+      <el-button type="info" @click="logout">退出</el-button>
+    </el-header
     >
     <!-- 侧边栏 -->
     <el-container>
@@ -21,7 +22,7 @@
         <div class="toggle-button" @click="toggleCollapse">|||</div>
         <!-- 侧边栏菜单区 -->
         <el-menu
-          background-color="#333744"
+          background-color="#2a3b60"
           text-color="#fff"
           active-text-color="#409Eff"
           unique-opened
@@ -44,12 +45,13 @@
             <el-menu-item
               :index="'/'+subItem.path"
               v-for="subItem in item.children"
-              :key="subItem.id" 
+              :key="subItem.id"
             >
               <template slot="title">
                 <i :class="iconsObj[subItem.id]"></i>
                 <span>{{ subItem.authName }}</span>
-              </template></el-menu-item
+              </template>
+            </el-menu-item
             >
           </el-submenu>
         </el-menu>
@@ -64,93 +66,114 @@
 </template>
 
 <script>
-export default {
-  created() {
-    this.getMenuList()
-  },
-  data() {
-    return {
-      // 左侧菜单数据
-      menuList: [],
-      iconsObj: {
-        '125': 'el-icon-s-custom',
-        '103': 'el-icon-menu',
-        '101': 'el-icon-s-claim',
-        '102': 'el-icon-s-order',
-        '145': 'el-icon-s-data',
-        '110': 'el-icon-user',
-        '111': 'el-icon-user-solid',
-        '112': 'el-icon-s-check',
-        '104': 'el-icon-s-grid',
-        '115': 'el-icon-s-order',
-        '121': 'el-icon-s-shop',
-        '107': 'el-icon-s-unfold',
-        '146': 'el-icon-s-marketing'
+  export default {
+    created() {
+      this.getMenuList();
+    },
+    data() {
+      return {
+        // 左侧菜单数据
+        menuList: [],
+        iconsObj: {
+          "125": "el-icon-s-custom",
+          "103": "el-icon-menu",
+          "101": "el-icon-s-claim",
+          "102": "el-icon-s-order",
+          "145": "el-icon-s-data",
+          "110": "el-icon-user",
+          "111": "el-icon-user-solid",
+          "112": "el-icon-s-check",
+          "104": "el-icon-s-grid",
+          "115": "el-icon-s-order",
+          "121": "el-icon-s-shop",
+          "107": "el-icon-s-unfold",
+          "146": "el-icon-s-marketing"
+        },
+        isCollapse: false
+      };
+    },
+    methods: {
+      logout() {
+        //  清除本地缓存（token）
+        window.sessionStorage.clear();
+        // 重新跳转到login页面
+        this.$router.push("/login");
       },
-      isCollapse: false
+      async getMenuList() {
+        const {data: res} = await this.$http.get("menus");
+        // console.log(res.data)
+        if (res.meta.status !== 200) return this.$message.error(res.meta.msg);
+        this.menuList = res.data;
+      },
+      // 点击按钮 切换菜单的折叠与展开
+      toggleCollapse() {
+        this.isCollapse = !this.isCollapse;
+      }
     }
-  },
-  methods: {
-    logout() {
-      //  清除本地缓存（token）
-      window.sessionStorage.clear()
-      // 重新跳转到login页面
-      this.$router.push('/login')
-    },
-    async getMenuList() {
-      const { data: res } = await this.$http.get('menus')
-      // console.log(res.data)
-      if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
-      this.menuList = res.data
-    },
-    // 点击按钮 切换菜单的折叠与展开
-    toggleCollapse() {
-      this.isCollapse = !this.isCollapse
-    }
-  }
-}
+  };
 </script>
 
 <style lang="less" scoped>
-.home-container {
-  height: 100%;
-}
-.el-header {
-  background-color: #373d41;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 0;
-  align-items: center;
-  div {
+  .home-container {
+    height: 100%;
+  }
+
+  .el-header {
+    background-color: #373d41;
     display: flex;
+    justify-content: space-between;
+    padding-left: 0;
     align-items: center;
-    img {
-      width: auto;
-      height: 60px;
-    }
-    span {
-      font-size: 20px;
-      color: #ffffff;
-      margin-left: 15px;
+
+    div {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: auto;
+        height: 60px;
+      }
+
+      span {
+        font-size: 20px;
+        color: #ffffff;
+        margin-left: 15px;
+      }
     }
   }
-}
-.el-aside {
-  background-color: #333744;
-  .el-menu {
-    border-right: 0;
+
+  .el-aside {
+    background-color: #333744;
+
+    .el-menu {
+      border-right: 0;
+    }
   }
-}
-.el-main {
-  background-color: #eaedf1;
-}
-.toggle-button {
-  background-color: #4a5064;
-  text-align: center;
-  color: #ffffff;
-  font-size: 10px;
-  line-height: 24px;
-  letter-spacing: 0.2em;
-  cursor: pointer;
-}
+
+  .el-main {
+    background-color: #eaedf1;
+  }
+  .toggle-button {
+    background-color: #4a5064;
+    text-align: center;
+    color: #ffffff;
+    font-size: 10px;
+    line-height: 24px;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+  }
+
+  .el-aside,.el-menu,.toggle-button,.he,.el-header{
+    background-color: #293a61;
+  }
+  .he{
+    padding: 20px;
+    /*width: 80%;*/
+  }
+  .he img{
+    /*border-radius: 20px;*/
+    width: 40px!important;
+    height: 40px!important;
+    /*width: 80%;*/
+  }
 </style>

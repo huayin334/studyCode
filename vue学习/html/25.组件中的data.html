@@ -10,42 +10,42 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
 
-    </style>
+  </style>
 
 </head>
 
 <body>
-    <div id="app">
-        <my1></my1>
-    </div>
-    <my1></my1>
-    <script src="../vue.js"></script>
-    <script>
+<div id="app">
+  <my1></my1>
+</div>
+<my1></my1>
+<script src="../vue.js"></script>
+<script>
 
-        // 全局组件
-        Vue.component('my1', {
-            // 在这里使用data中的值
-            template: '<h1>全局组件1{{msg}}</h1>',
-            // 组件中的data和实例中的data有点不一样 组件中的data必须是一个方法
-            // 而且方法内部要返回一个对象
-            data: function () {
-                return {
-                    msg:'这是组件中data定义的数据'
-                }
-            }
-        })
-        const app = new Vue({
-            el: '#app',
-            data: {},
-            methods: {}
-        });
-    </script>
+  // 全局组件
+  Vue.component("my1", {
+    // 在这里使用data中的值
+    template: "<h1>全局组件1{{msg}}</h1>",
+    // 组件中的data和实例中的data有点不一样 组件中的data必须是一个方法
+    // 而且方法内部要返回一个对象
+    data: function () {
+      return {
+        msg: "这是组件中data定义的数据"
+      };
+    }
+  });
+  const app = new Vue({
+    el: "#app",
+    data: {},
+    methods: {}
+  });
+</script>
 </body>
 
 </html>

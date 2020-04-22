@@ -43,4 +43,17 @@ export default {
 .el-popper .el-cascader-panel{
   max-height: 250px!important;
 }
+
+.el-input__inner{
+  background-color: #3f99d9!important;
+}
+
+  .el-button{
+    background-color:#5ecaee!important;
+  }
+
+/*.el-main{*/
+/*  background-color: #293a61!important;*/
+/*}*/
+
 </style>
