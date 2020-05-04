@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+<script>
+  let arr = [[2, 43, 3, 24], [3, 4, 23, 444], [2, 737, 65, 447]];
+  let newArr = [];
+  arr.forEach(item => {
+    item.forEach(i => {
+      newArr.push(i);
+    });
+  });
+  console.log(newArr);
+
+  function name1() {
+    let a = 12;
+    return function name2() {
+      console.log(a);
+    };
+  }
+
+  let b = name1();
+  b();//12
+
+
+  let lis = document.querySelectorAll("li");
+  // for (let i = 0; i < 3; i++) {
+  //   //在这里把i存储到index里
+  //   lis[i].index = i;
+  //   lis[i].onclick = function () {
+  //     console.log(this.index);
+  //   };
+  // }
+
+  // function help(i) {
+  //   return () => {
+  //     console.log(i);
+  //   };
+  // }
+  //
+  // for (var i = 0; i < 3; i++) {
+  //   lis[i].onclick=help(i)
+  // }
+  for (var i = 0; i < 3; i++) {
+    (function (index) {
+      lis[index].onclick = function () {
+        console.log(index);
+      };
+    })(i);
+  }
+
+ //  let str = "cfjeiochw2390wih8";
+ //  let arrs = [21, 32, 434, 34, 34];
+ //  console.log("str", str);
+ //  let newstr = str.split("").reverse().join("");
+ //  console.log("newstr", newstr);
+ //  console.log(str.split(""));
+ //  console.log("str", str);
+ //  console.log(str.slice(1, 4));
+ //  console.log(arrs.slice(1, 3));
+ //  const arr1 = [1, [2, [3], 4], 5];
+ //  arr1.join()
+ //    .split(",")
+ //    .map(it => Number(it));
+ //  console.log(arr1);
+ //
+ //  var obj = {
+ //    hhh:'1234',
+ //    hisadh:9237103
+ //  }
+ //  for (let k in obj) {
+ //    console.log(k)
+ //    console.log(obj[k])
+ //  }
+ // console.log(Object.keys(obj))
+ //  let arr2 = [2,3243,345,342,67,54]
+ //  for (let v of arr2) {
+ //    console.log(v)
+ //  }
+ //  for (let i in arr2) {
+ //    console.log(i)
+ //  }
+ // let arr22 = [1,[2],3]
+ //  console.log(...arr22)
+
+//  数组去重
+// let originalArray =[1,2,3,3,3,24,54,54,2,435,1,34]
+//   let resultArr = [...new Set(originalArray)]
+//   console.log(resultArr)
+//   const resultArr =   [1, "1", 2, true, "true", false, null,1,2,"abc", undefined, NaN]
+//
+//   for (let i = 0; i < resultArr.length; i++) {
+//     // 没有该 key 值
+//     if (!Map.has(resultArr[i])) {
+//       Map.set(resultArr[i], true);
+//       resultArr.push(resultArr[i]);
+//     }
+//   }
+//
+//   console.log(resultArr);
+//
+//   const resultArr = [];
+//   let originalArray = [1, "1", 2, true, "true", false, null, 1,2, "abc", undefined, NaN, NaN];
+//   for (let i = 0; i < originalArray.length; i++) {
+//     if (resultArr.indexOf(originalArray[i]) < 0) {
+//       resultArr.push(originalArray[i]);
+//     }
+//   }
+//   console.log('indexOf', resultArr);
+//
+//   const resultArr1 = [];
+//   for (let i = 0; i < originalArray.length; i++) {
+//     if (!resultArr1.includes(originalArray[i])) {
+//       resultArr1.push(originalArray[i]);
+//     }
+//   }
+//   console.log('includes',resultArr1);
+  // [1, "1", 2, true, "true", false, null, {…}, {…}, "abc", undefined, NaN]
+  // 复制代码
+
+  // const obj = {};
+  // let originalArray = [1, "1", 2, true, "true", false, null,"abc",1,2, undefined, NaN];
+  // const resultArr = originalArray.filter(function (item) {
+  //   return obj.hasOwnProperty(typeof item + item) ? false : (obj[typeof item + item] = true);
+  // });
+  //
+  // console.log(resultArr);
+let a = [1,2,3,4]
+  console.log(a.push(1))
+  console.log(a.unshift(2))
+  console.log(a.pop())
+  console.log(a.shift())
+  console.log(a)
+  console.log(+ new Date())
+  
+  let obj = {
+    huayin:'hhhh'
+  }
+  Object.defineProperty(obj, 'val',{
+    set:function () {
+      console.log('set')
+    },
+    get:function () {
+      console.log('get');
+      return '返回值'
+    }
+  })
+  obj.val = 'lalala';
+  console.log(obj)
+</script>
+</body>
+</html>

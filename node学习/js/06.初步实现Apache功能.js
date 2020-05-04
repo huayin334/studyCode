@@ -5,7 +5,7 @@
  */
 //引入模块
 let http = require("http");
-
+let fs = require('fs');
 //1.创建Server
 let server = http.createServer();
 
@@ -19,10 +19,24 @@ server.on("request", (req, res) => {
   console.log(req.url);
   if (req.url === "/") {
     res.end("hello world");
-  } else {
-    res.end("404");
+  } else if (req.url === '/index.html'){
+    fs.readFile('../data/index.html',(err, data)=>{
+      if (err){
+        return res.end('404 Not Found.')
+      }
+      // 这里不需要设置文件编码，html里面有编码设置
+      res.end(data);
+
+    })
+  }else if (req.url === '/hello.txt'){
+    fs.readFile('../data/hello.txt',(err,data)=>{
+      if (err){
+        return res.end('404')
+      }
+      res.setHeader('Content-Type','text/plain;charset=utf-8')
+      res.end(data);
+    })
   }
-  res.end("结束");
 });
 
 //3.绑定端口号，启动服务

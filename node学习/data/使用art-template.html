@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+<script src="../node_modules/art-template/lib/template-web.js"></script>
+<!--防止浏览器当成js来解析-->
+<script type="text/template" id="tpl">
+  hello 我是{{ name }}
+</script>
+<script>
+  let ret = template('tpl',{
+    name:'huayin'
+  })
+  console.log(ret)
+</script>
+</body>
+
+</html>

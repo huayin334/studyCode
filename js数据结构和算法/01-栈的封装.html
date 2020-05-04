@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>栈的封装</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+<script>
+  //封装栈类
+  function Stack() {
+    //栈中的属性
+    this.items = [];
+    //栈的操作
+    //  1.将元素压入栈
+    //给每一个实例对象都添加一个push方法，耗内存
+    // this.push = function () {
+    // }
+    //推荐使用这一种，因为这样的方法是共享的，更加节约内存，效率更高
+    Stack.prototype.push = function (element) {
+      this.items.push(element);
+    };
+    //  2.取出元素
+    Stack.prototype.pop = function () {
+      return this.items.pop();
+    };
+    //  3.查看栈顶元素
+    Stack.prototype.peek = function () {
+      return this.items[this.items.length - 1];
+    };
+    //  4.判断栈是否为空
+    Stack.prototype.isEmpty = function () {
+      return this.items.length === 0;
+    };
+    //  5.获取栈中元素的个数
+    Stack.prototype.size = function () {
+      return this.items.length;
+    };
+    //  6.toString方法
+    Stack.prototype.toString = function () {
+      return this.items.join(" ");
+    };
+
+  }
+
+  //栈的使用
+  let s = new Stack();
+  // s.items = [12,34,56,87,86];
+  // console.log(s.toString())
+  console.log(s.push(1222));
+  console.log(s);
+
+  //十进制转二进制
+  function dec2bin(decNumber) {
+    //  1.定义栈对象，用来保存余数
+    let stack = new Stack();
+    //  2.循环操作
+    while (decNumber > 0) {
+    //  2.1获取余数 放入栈中
+      stack.push(decNumber % 2)
+
+    //  2.2获取整除后的结果，作为下一次运算的数字
+      decNumber = Math.floor(decNumber / 2);
+    }
+  //  3.从栈中取出0和1
+    let binaryString = ''
+    while (!stack.isEmpty()) {
+      binaryString += stack.pop()
+    }
+    return binaryString;
+  }
+  
+  console.log(dec2bin(10))
+  console.log(dec2bin(100))
+</script>
+</body>
+
+</html>

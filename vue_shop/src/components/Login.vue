@@ -142,4 +142,13 @@ export default {
   justify-content: center;
   padding-right: 40px;
 }
+
+.van-swipe__indicator:not(:last-child){
+  position: relative;
+  bottom: 10px;
+}
+.van-swipe__indicator{
+  position: relative;
+  bottom: 10px;
+}
 </style>

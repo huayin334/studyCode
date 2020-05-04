@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>队列的封装</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+<script>
+
+  // 封装队列类-基于数组
+  function Queue() {
+    //  属性
+    this.items = [];
+    //  方法
+    //  1.将元素加入到队列中
+    Queue.prototype.enqueue = function (element) {
+      this.items.push(element);
+    };
+    //  2.从队列中删除前端元素,此处性能很低，因为删除一个之后，后面的都要往前移动，列表则不会这样
+    Queue.prototype.dequeue = function () {
+      return this.items.shift();
+    };
+    //  3.查看前端的元素
+    Queue.prototype.front = function () {
+      return this.items[0];
+    };
+    //  4.查看队列是否为空
+    Queue.prototype.isEmpty = function () {
+      return this.items.length === 0;
+    };
+    //  5.查看队列中的元素的个数
+    Queue.prototype.size = function () {
+      return this.items.length;
+    };
+    //  6.toString()方法
+    Queue.prototype.toString = function () {
+      return this.items.join(" ");
+    };
+
+  }
+
+  //  使用队列
+  let queue = new Queue();
+  queue.enqueue(12);
+  queue.enqueue(122);
+  queue.enqueue(142);
+  console.log(queue.items);
+  queue.dequeue();
+  console.log(queue.items);
+  console.log(queue.isEmpty());
+  console.log(queue.front());
+  console.log(queue.size());
+  console.log(queue.toString());
+</script>
+</body>
+
+</html>

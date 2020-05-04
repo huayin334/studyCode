@@ -18,3 +18,9 @@ function getNum(j) {
     return arr[j - 1];
 }
 console.log(getNum(1477));
+let a = 8
+if (a%2===0){
+    console.log(a,'是偶数')
+} else{
+    console.log(a,'是奇数')
+}
